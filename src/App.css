@@ -2,21 +2,41 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Gradient header on all pages */
+.header {
+  padding: 30px;
+  text-align: center;
+  background-image: linear-gradient(to right, #00afce , #ef9db3);
   color: white;
+  font-size: 30px;
 }
 
-.App-link {
-  color: #09d3ac;
+/* Home page styling */
+h1 {
+font-family: canada-type-gibson, sans-serif;
+font-weight: 900;
+font-style: normal;
+color: #000000;
+font-size: 12vw;
+line-height: 9vw;
 }
+
+#title {
+  display: inline-block;
+  text-align: left;
+}
+
+#maintitle {
+  text-align: center;
+}
+
+#subtitle {
+  font-family: canada-type-gibson, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #000000;
+  font-size: 4vw;
+  line-height: 4vw;
+  width: 100px;
+}
+
