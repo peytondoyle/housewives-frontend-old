@@ -94,9 +94,13 @@ font-family: canada-type-gibson, sans-serif;
 font-weight: 900;
 font-style: normal;
 color: #000000;
-font-size: 3vw;
+font-size: 2.5vw;
 line-height: 0.5vw;
 text-align: left;
+}
+
+#menucities:hover {
+  color: #00afce;
 }
 
 #menuitems {
@@ -107,6 +111,10 @@ color: #000000;
 font-size: 5vw;
 line-height: 1vw;
 text-align: right;
+}
+
+#menuitems:hover {
+    color: #ef9db3;
 }
 
 #menuleft {
