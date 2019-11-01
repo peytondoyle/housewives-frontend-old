@@ -24,6 +24,8 @@ line-height: 9vw;
 #title {
   display: inline-block;
   text-align: left;
+  margin-top: 2vw;
+  margin-bottom: 0px;
 }
 
 #maintitle {
@@ -35,8 +37,49 @@ line-height: 9vw;
   font-weight: 900;
   font-style: normal;
   color: #000000;
-  font-size: 4vw;
-  line-height: 4vw;
-  width: 100px;
+  font-size: 3vw;
+  line-height: 3.25vw;
+  width: 72vw;
+  padding-left: 12vw;
+  padding-right: 15vw;
+  text-align: left;
+}
+
+hr {
+  width: 73vw;
+  height: 0.7vw;
+  margin:0 auto;
+  padding:0 auto;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+  background-color:#000000;
+}
+
+.psubtitle {
+  margin: 0px;
+}
+
+.psubtitle em {
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+}
+
+/* Menu styling */
+.menubutton {
+  position: static;
+  padding-top: 1vw;
+  padding-left: 83vw;
+  display:inline-block;
+  justify-content: center;
+  border: 0px;
+}
+
+.menubuttonimage {
+  height: auto;
+  width: 18%;
 }
 

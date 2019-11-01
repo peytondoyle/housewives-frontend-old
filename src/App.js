@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Homepage from "./containers/Homepage.js"
 import IndexPage from "./containers/IndexPage.js"
+import Menu from "./containers/Menu.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,20 +12,75 @@ import {
   Redirect
 } from "react-router-dom";
 
-function App() {
-  return (
-    <Router>
+class App extends React.Component {
+
+  constructor(){
+    super()
+      this.state={
+        menu_on: false
+      }
+  }
+
+  openMenu = () => {
+    {this.state.menu_on === false ?
+      this.setState({menu_on: true}) :
+      this.setState({menu_on: false})
+    }
+  }
+
+  render(){
+  	return (
+      <Router>
+      {
+        this.state.menu_on === false ?
+        <div class="header">
+        </div>
+        :
+        <p>test lol</p>
+      }
         <div>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route path="/home">
-            <Homepage />
+            {
+              this.state.menu_on === false ?
+              <Homepage
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}/>
+              :
+              <Menu />
+            }
           </Route>
           <Route path="/housewives">
+            <Menu />
             <IndexPage />
           </Route>
         </div>
       </Router>
-  );
-}
+  	);
+  }
+
+};
 
 export default App;
+
+// function App() {
+//   return (
+    // <Router>
+    //     <div>
+    //       <Route exact path="/" render={() => <Redirect to="/home" />} />
+    //       <Route path="/home">
+    //         <Menu />
+    //         <Homepage />
+    //       </Route>
+    //       <Route path="/housewives">
+    //         <Menu />
+    //         <IndexPage />
+    //       </Route>
+    //     </div>
+    //   </Router>
+//   );
+// }
+
+// export default App;
+
+
