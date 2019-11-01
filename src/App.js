@@ -31,13 +31,6 @@ class App extends React.Component {
   render(){
   	return (
       <Router>
-      {
-        this.state.menu_on === false ?
-        <div class="header">
-        </div>
-        :
-        <p>test lol</p>
-      }
         <div>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route path="/home">
@@ -47,7 +40,9 @@ class App extends React.Component {
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}/>
               :
-              <Menu />
+              <Menu
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}/>
             }
           </Route>
           <Route path="/housewives">

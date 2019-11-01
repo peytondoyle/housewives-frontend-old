@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { spacing } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,24 +26,33 @@ export default function FullWidthGrid(props) {
   return (
     <div className={classes.root}>
     <div class="menubutton">
-      <img src="https://i.ibb.co/6szFNdq/Menu-Icons.png" class="menubuttonimage"
+      <img src="https://i.ibb.co/CKPwv00/Menu-Icons2.png" class="menubuttonimage"
       onClick={props.openMenu}></img>
     </div>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-          <div id="maintitle">
-            <h1 id="title">Real<br></br>Housewives</h1>
-          </div>
-          <hr></hr>
-          <div id="maintitle">
-          <div id="subtitle">
-            <p class="psubtitle">Most everything you’d want to know about the <em>Real Housewives of New York</em> & all of the other American housewife franchises.</p>
-          </div>
-          </div>
+      <Grid item xs={12} sm={6}>
+        <Paper className={classes.paper} id="menuleft">
+            <p id="menucities">Atlanta</p>
+            <p id="menucities">Beverly Hills</p>
+            <p id="menucities">Dallas</p>
+            <p id="menucities">New Jersey</p>
+            <p id="menucities">New York</p>
+            <p id="menucities">Orange County</p>
+            <p id="menucities">Potomac</p>
+            <hr id="hrmenu"></hr>
+            <p id="menucities">D.C.</p>
+            <p id="menucities">Miami</p>
           </Paper>
-        </Grid>
       </Grid>
+      <Grid item xs={12} sm={6} id="menuright">
+        <Paper className={classes.paper}>
+          <p id="menuitems">Login</p>
+          <p id="menuitems">Housewives</p>
+          <p id="menuitems">Logout</p>
+          <p id="menuitems">Search</p>
+        </Paper>
+      </Grid>
+    </Grid>
     </div>
   );
 }

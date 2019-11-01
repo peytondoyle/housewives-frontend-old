@@ -4,11 +4,17 @@
 
 /* Gradient header on all pages */
 .header {
-  padding: 30px;
-  text-align: center;
+  padding: 2vw;
   background-image: linear-gradient(to right, #00afce , #ef9db3);
-  color: white;
-  font-size: 30px;
+}
+
+/* Gradient sidebar when menu is active */
+.sidebar {
+  background-image: linear-gradient(to bottom, #00afce , #ef9db3);
+  height: 100vh;
+  width: 4vw;
+  float: left;
+  /* position: relative; */
 }
 
 /* Home page styling */
@@ -24,7 +30,7 @@ line-height: 9vw;
 #title {
   display: inline-block;
   text-align: left;
-  margin-top: 2vw;
+  margin-top: 1vw;
   margin-bottom: 0px;
 }
 
@@ -71,7 +77,7 @@ hr {
 /* Menu styling */
 .menubutton {
   position: static;
-  padding-top: 1vw;
+  padding-top: 3vw;
   padding-left: 83vw;
   display:inline-block;
   justify-content: center;
@@ -83,3 +89,40 @@ hr {
   width: 18%;
 }
 
+#menucities {
+font-family: canada-type-gibson, sans-serif;
+font-weight: 900;
+font-style: normal;
+color: #000000;
+font-size: 3vw;
+line-height: 0.5vw;
+text-align: left;
+}
+
+#menuitems {
+font-family: canada-type-gibson, sans-serif;
+font-weight: 900;
+font-style: normal;
+color: #000000;
+font-size: 5vw;
+line-height: 1vw;
+text-align: right;
+}
+
+#menuleft {
+  padding-left: 18vw;
+}
+
+#menuright {
+  padding-right: 18vw;
+}
+
+#hrmenu {
+  width: 30vw;
+  height: 0.7vw;
+  margin:0 auto;
+  padding:0 auto;
+  margin-top: 0vw;
+  margin-right: 100vw;
+  background-color:#000000;
+}
