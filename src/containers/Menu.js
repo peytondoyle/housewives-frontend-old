@@ -47,7 +47,7 @@ export default function FullWidthGrid(props) {
       <Grid item xs={12} sm={6} id="menuright">
         <Paper className={classes.paper}>
           <p id="menuitems">Login</p>
-          <p id="menuitems">Housewives</p>
+          <a href="/housewives" class="menulinks"><p id="menuitems">Housewives</p></a>
           <p id="menuitems">Logout</p>
           <p id="menuitems">Search</p>
         </Paper>

@@ -134,3 +134,7 @@ text-align: right;
   margin-right: 100vw;
   background-color:#000000;
 }
+
+.menulinks {
+  text-decoration: none;
+}
