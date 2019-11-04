@@ -138,3 +138,18 @@ text-align: right;
 .menulinks {
   text-decoration: none;
 }
+
+/* Styling for index page */
+.foo {
+  width: 150px;
+  height: 200px;
+  /* margin-left: 10vw;
+  margin-right: 15vw; */
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+#yolo {
+  background-image: linear-gradient(to right, #00afce , #ef9db3);
+  align: center;
+  margin: 1vw;
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { spacing } from '@material-ui/system';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     border: 0,
     boxShadow: 'none',
     color: theme.palette.text.secondary,
+    maxWidth: 'fixed',
+    alignItems: "flex-start",
+    justifyItems: 'flex-end'
   },
 }));
 
@@ -31,16 +36,20 @@ export default function FullWidthGrid(props) {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="title">Real<br></br>Hosdfkjlsdkjsdlkfusewives</h1>
+            <h1 id="title">All<br></br>Housewives</h1>
           </div>
           <hr></hr>
-          <div id="maintitle">
-          <div id="subtitle">
-            <p class="psubtitle">Most everything you’d want to know about the <em>Real Housewives of New York</em> & all of the other American housewife franchises.</p>
-          </div>
-          </div>
           </Paper>
         </Grid>
+        <Container fixed>
+          <div style={{ margin: 10, textAlign: 'center'}}>
+            <Grid container spacing={5} justify="center" >
+              <Grid item xs={3} id="yolo">xs=3</Grid>
+              <Grid item xs={3} id="yolo">xs=3</Grid>
+              <Grid item xs={3} id="yolo">xs=3</Grid>
+            </Grid>
+          </div>
+        </Container>
       </Grid>
     </div>
   );

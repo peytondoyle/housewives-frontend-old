@@ -17,8 +17,7 @@ class App extends React.Component {
   constructor(){
     super()
       this.state={
-        menu_on: false,
-        index_on: false
+        menu_on: false
       }
   }
 
@@ -26,13 +25,6 @@ class App extends React.Component {
     {this.state.menu_on === false ?
       this.setState({menu_on: true}) :
       this.setState({menu_on: false})
-    }
-  }
-
-  openIndex = () => {
-    {this.state.index_on === false ?
-      this.setState({index_on: true}) :
-      this.setState({index_on: false})
     }
   }
 
@@ -51,8 +43,7 @@ class App extends React.Component {
               <Menu
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              openIndex={this.openIndex}
-              index_on={this.state.index_on}/>
+              />
             }
           </Route>
           <Route path="/housewives">
@@ -65,8 +56,7 @@ class App extends React.Component {
               <Menu
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              openIndex={this.openIndex}
-              index_on={this.state.index_on}/>
+              />
             }
           </Route>
         </div>
