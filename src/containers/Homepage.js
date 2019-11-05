@@ -48,7 +48,7 @@ export default function FullWidthGrid(props) {
           <hr></hr>
           <div id="maintitle">
           <div id="subtitle">
-            <p class="psubtitle">Most everything you’d want to know about the <em>Real Housewives of New York</em> & all of the other American housewife franchises.</p>
+            <p class="psubtitle">Most everything you’d want to know about the American <em>Real Housewives</em> franchises.</p>
           </div>
           </div>
           </Paper>

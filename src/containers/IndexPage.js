@@ -90,7 +90,7 @@ export default function FullWidthGrid(props) {
         </div>
 
         <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
-          <Box display="flex" p={1} style={{margin: '4.3vw'}}>
+          <Box display="flex" p={1} style={{margin: '-1.3vw'}}>
           <Grid container spacing={3}>
             {props.allHousewives.map(housewife => <HousewifeCard
             housewife={housewife}/>)}

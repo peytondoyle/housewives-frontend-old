@@ -201,4 +201,49 @@ p.filterbuttontext {
   object-position: 50% 0;
   width: 15vw;
   height: 30vw;
+  border: 0px;
+  border-style: solid;
+  margin-right: 0.5vw;
+}
+
+.housewifeindeximg:hover {
+  opacity: 75%;
+  transition: 0.5s ease;
+  /* background-color: #008CBA; */
+}
+
+h5 {
+  font-family: canada-type-gibson, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.5vw;
+  line-height: 1.75vw;
+  text-align: left;
+  margin: 0px;
+  text-align: center;
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  text-decoration: none;
+}
+
+h6 {
+  font-family: canada-type-gibson, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 0.9vw;
+  line-height: 1.0vw;
+  text-align: left;
+  margin: 0px;
+  text-align: center;
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
 }
