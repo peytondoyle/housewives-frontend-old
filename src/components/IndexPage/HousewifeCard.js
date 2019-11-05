@@ -15,27 +15,30 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   card: {
-  maxWidth: 350,
-  border: 0
+  maxWidth: 300,
+  border: 0,
+  padding: 10,
+  // maxWidth: 'fixed',
+  // alignItems: "flex-start",
+  // justifyItems: 'flex-end'
   },
   media: {
     height: 140,
   },
+  root: {
+  flexGrow: 1,
+},
 }));
 
 export default function FullWidthGrid(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <div className={classes.root}>
-    <Grid item xs>
-      <Paper className={classes.paper}>
-        <div style={{ width: '10%', height: '10vw', alignItems:"center"}}>
-        <h3>{props.housewife.firstname}</h3>
-        </div>
-      </Paper>
-    </Grid>
-    </div>
+    <Grid item xs={3}>
+      <div class="indexcard">
+       <h4>{props.housewife.firstname}</h4>
+       <img src={props.housewife.image} class="housewifeindeximg"></img>
+      </div>
+     </Grid>
   );
 }

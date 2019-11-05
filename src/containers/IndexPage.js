@@ -30,6 +30,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     justifyItems: 'flex-end'
   },
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridGap: theme.spacing(3),
+  }
 }));
 
 export default function FullWidthGrid(props) {
@@ -85,10 +90,12 @@ export default function FullWidthGrid(props) {
         </div>
 
         <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
+          <Box display="flex" p={1} style={{margin: '4.3vw'}}>
           <Grid container spacing={3}>
             {props.allHousewives.map(housewife => <HousewifeCard
             housewife={housewife}/>)}
           </Grid>
+          </Box>
         </div>
 
       </Grid>

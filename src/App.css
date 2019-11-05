@@ -179,3 +179,26 @@ p.filterbuttontext {
 .MuiBox-root-134 {
   padding-top: 0px !important;
 }
+
+.indexcard {
+  text-align: center;
+  /* width: 10vw; */
+}
+
+.housewifeindeximg {
+  /* width: 80%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% 0; */
+  /* background-color: transparent;
+  background-repeat: repeat; */
+
+  /* max-width: 40vw;
+  max-height: 10vw;
+  object-position: 100% 0;
+  object-fit: scale-down; */
+  object-fit: cover;
+  object-position: 50% 0;
+  width: 15vw;
+  height: 30vw;
+}
