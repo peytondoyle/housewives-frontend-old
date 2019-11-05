@@ -1,13 +1,22 @@
 import React from 'react';
+import HousewifeCard from "../components/IndexPage/HousewifeCard.js"
 import { makeStyles } from '@material-ui/core/styles';
 import { spacing } from '@material-ui/system';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 0,
     border: 0,
     boxShadow: 'none'
   },
@@ -33,7 +42,7 @@ export default function FullWidthGrid(props) {
       onClick={props.openMenu}></img>
     </div>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={12} id="removepadding">
           <Paper className={classes.paper}>
           <div id="maintitle">
             <h1 id="title">All<br></br>Housewives</h1>
@@ -41,15 +50,43 @@ export default function FullWidthGrid(props) {
           <hr></hr>
           </Paper>
         </Grid>
-        <Container fixed>
-          <div style={{ margin: 10, textAlign: 'center'}}>
-            <Grid container spacing={5} justify="center" >
-              <Grid item xs={3} id="yolo">xs=3</Grid>
-              <Grid item xs={3} id="yolo">xs=3</Grid>
-              <Grid item xs={3} id="yolo">xs=3</Grid>
+
+        <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
+          <Box display="flex" p={1} style={{marginTop: '-4.3vw'}}>
+            <div id="filters">
+              <p class="filterbuttontext">City</p>
+            </div>
+            <div id="filters">
+              <p class="filterbuttontext">Tenure</p>
+            </div>
+            <div id="filters">
+              <p class="filterbuttontext">Rating</p>
+            </div>
+            <div id="filters">
+              <p class="filterbuttontext">Name</p>
+            </div>
+          </Box>
+        </div>
+
+<div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
+        <Grid container spacing={3}>
+  
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
             </Grid>
-          </div>
-        </Container>
+                    </div>
+
+
       </Grid>
     </div>
   );
