@@ -64,7 +64,8 @@ class App extends React.Component {
             <IndexPage
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              allHousewives={this.state.allHousewives}/>
+              allHousewives={this.state.allHousewives}
+              />
               :
               <Menu
               openMenu={this.openMenu}

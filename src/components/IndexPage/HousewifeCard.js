@@ -36,7 +36,7 @@ export default function FullWidthGrid(props) {
   return (
     <Grid item xs={3}>
       <div class="indexcard">
-        <a href=`/${props.housewife.lastname}`>
+        <a href="google.com">
        <img src={props.housewife.image} class="housewifeindeximg"></img>
        <h5>{props.housewife.firstname} {props.housewife.lastname}</h5>
        <h6>{props.housewife.city}</h6>
