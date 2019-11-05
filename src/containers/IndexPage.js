@@ -35,6 +35,22 @@ const useStyles = makeStyles(theme => ({
 export default function FullWidthGrid(props) {
   const classes = useStyles();
 
+  function FormRow() {
+  return (
+    <React.Fragment>
+      <Grid item xs={4}>
+        <Paper className={classes.paper}>item</Paper>
+      </Grid>
+      <Grid item xs={4}>
+        <Paper className={classes.paper}>item</Paper>
+      </Grid>
+      <Grid item xs={4}>
+        <Paper className={classes.paper}>item</Paper>
+      </Grid>
+    </React.Fragment>
+  );
+}
+
   return (
     <div className={classes.root}>
     <div class="menubutton">
@@ -68,24 +84,12 @@ export default function FullWidthGrid(props) {
           </Box>
         </div>
 
-<div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
-        <Grid container spacing={3}>
-  
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
-              </Grid>
-            </Grid>
-                    </div>
-
+        <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
+          <Grid container spacing={3}>
+            {props.allHousewives.map(housewife => <HousewifeCard
+            housewife={housewife}/>)}
+          </Grid>
+        </div>
 
       </Grid>
     </div>

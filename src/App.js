@@ -20,7 +20,7 @@ class App extends React.Component {
     super()
       this.state={
         menu_on: false,
-        allHousewives: null
+        allHousewives: []
       }
   }
 
@@ -29,7 +29,7 @@ class App extends React.Component {
   .then(res => res.json())
   .then(data => {
     console.log(data)
-    // this.setState({allHousewives: data})
+    this.setState({allHousewives: data})
     })
   }
 
@@ -63,7 +63,8 @@ class App extends React.Component {
               this.state.menu_on === false ?
             <IndexPage
               openMenu={this.openMenu}
-              menu_on={this.state.menu_on}/>
+              menu_on={this.state.menu_on}
+              allHousewives={this.state.allHousewives}/>
               :
               <Menu
               openMenu={this.openMenu}
