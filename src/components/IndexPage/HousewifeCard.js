@@ -30,18 +30,28 @@ const useStyles = makeStyles(theme => ({
 },
 }));
 
+let handleClick = (e) => {
+    e.preventDefault();
+    // debugger
+    console.log(e.target.parentElement.children[0].dataset.hwid);
+    return e.target.parentElement.children[0].dataset.hwid
+    // NEED TO FIGURE OUT THE LINKING
+  };
+
+
 export default function FullWidthGrid(props) {
   const classes = useStyles();
 
   return (
     <Grid item xs={3}>
+      <a href="#" onClick={handleClick}>
       <div class="indexcard">
-        <a href="google.com">
-       <img src={props.housewife.image} class="housewifeindeximg"></img>
+       <img src={props.housewife.image} class="housewifeindeximg" data-hwid={props.housewife.id}></img>
        <h5>{props.housewife.firstname} {props.housewife.lastname}</h5>
        <h6>{props.housewife.city}</h6>
-       </a><br></br>
+       <br></br>
       </div>
+       </a>
      </Grid>
   );
 }
