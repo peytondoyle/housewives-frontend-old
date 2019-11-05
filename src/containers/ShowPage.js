@@ -19,10 +19,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function FullWidthGrid(props) {
-  
+
   const classes = useStyles();
 
   return (
+    props.selectedHW ?
     <div className={classes.root}>
     <div class="menubutton">
       <img src="https://i.ibb.co/6szFNdq/Menu-Icons.png" class="menubuttonimage"
@@ -32,7 +33,9 @@ export default function FullWidthGrid(props) {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="title">Real<br></br>Housewives</h1>
+          <img src={props.selectedHW.image} class="housewifeindeximg"></img>
+            <h1 id="title">
+             {props.selectedHW.firstname}<br></br>{props.selectedHW.lastname}</h1>
           </div>
           <hr></hr>
           <div id="maintitle">
@@ -44,5 +47,8 @@ export default function FullWidthGrid(props) {
         </Grid>
       </Grid>
     </div>
+    :
+    "yolo"
+
   );
 }

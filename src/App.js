@@ -54,9 +54,8 @@ class App extends React.Component {
   }
 
   findHW = (routerProps) => {
-    let housewifeLastName = routerProps.match.params.lastname
-    let t = this
-    let selectedHousewife = this.state.allHousewives.find(hw => hw.lastname === housewifeLastName)
+    let housewifeId = parseInt(routerProps.match.params.id)
+    let selectedHousewife = this.state.allHousewives.find(hw => hw.id === housewifeId)
     return <ShowPage selectedHW={selectedHousewife}/>}
 
   render(){
@@ -78,7 +77,7 @@ class App extends React.Component {
             }
           </Route>
           <Switch>
-          <Route path={`/housewives/:lastname`}
+          <Route path={`/housewives/:id`}
           render={this.findHW}/>
           <Route path="/housewives" render={this.indexOrMenu} />
           </Switch>
