@@ -12,13 +12,25 @@ import {
   Redirect
 } from "react-router-dom";
 
+let HOUSEWIVES_URL = "https://realhousewives-backend.herokuapp.com/housewives"
+
 class App extends React.Component {
 
   constructor(){
     super()
       this.state={
-        menu_on: false
+        menu_on: false,
+        allHousewives: null
       }
+  }
+
+  componentDidMount(){
+  fetch(HOUSEWIVES_URL)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    // this.setState({allHousewives: data})
+    })
   }
 
   openMenu = () => {
