@@ -1,26 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { spacing } from '@material-ui/system';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   card: {
   maxWidth: 300,
   border: 0,
   padding: 10,
-  // maxWidth: 'fixed',
-  // alignItems: "flex-start",
-  // justifyItems: 'flex-end'
   },
   media: {
     height: 140,
@@ -33,8 +21,8 @@ const useStyles = makeStyles(theme => ({
 let handleClick = (e) => {
     e.preventDefault();
     // debugger
-    console.log(e.target.parentElement.children[0].dataset.hwid);
-    return e.target.parentElement.children[0].dataset.hwid
+    let value = e.target.parentElement.children[0].dataset.hwid
+    this.setState({selectedId: value})
     // NEED TO FIGURE OUT THE LINKING
   };
 
@@ -44,14 +32,14 @@ export default function FullWidthGrid(props) {
 
   return (
     <Grid item xs={3}>
-      <a href="#" onClick={handleClick}>
+      <Link to={`/housewives/${props.housewife.id}`}>
       <div class="indexcard">
        <img src={props.housewife.image} class="housewifeindeximg" data-hwid={props.housewife.id}></img>
        <h5>{props.housewife.firstname} {props.housewife.lastname}</h5>
        <h6>{props.housewife.city}</h6>
        <br></br>
       </div>
-       </a>
+      </Link>
      </Grid>
   );
 }

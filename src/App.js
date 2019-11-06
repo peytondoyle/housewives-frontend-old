@@ -56,13 +56,17 @@ class App extends React.Component {
   findHW = (routerProps) => {
     let housewifeId = parseInt(routerProps.match.params.id)
     let selectedHousewife = this.state.allHousewives.find(hw => hw.id === housewifeId)
-    return <ShowPage selectedHW={selectedHousewife}/>}
+    return <ShowPage selectedHW={selectedHousewife}
+    openMenu={this.openMenu}
+    menu_on={this.state.menu_on}/>}
 
   render(){
   	return (
       <Router>
         <div>
+        <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
+
           <Route path="/home">
             {
               this.state.menu_on === false ?
@@ -76,11 +80,32 @@ class App extends React.Component {
               />
             }
           </Route>
-          <Switch>
-          <Route path={`/housewives/:id`}
-          render={this.findHW}/>
-          <Route path="/housewives" render={this.indexOrMenu} />
-          </Switch>
+
+          {
+            this.state.menu_on === false ?
+            <Route path={`/housewives/:id`}
+            render={this.findHW}
+            openMenu={this.openMenu}
+            menu_on={this.state.menu_on}/>
+            :
+            <Menu
+            openMenu={this.openMenu}
+            menu_on={this.state.menu_on}
+            />
+          }
+          
+          {
+            this.state.menu_on === false ?
+            <Route path="/housewives" render={this.indexOrMenu}
+            openMenu={this.openMenu}
+            menu_on={this.state.menu_on}/>
+            :
+            <Menu
+            openMenu={this.openMenu}
+            menu_on={this.state.menu_on}
+            />
+          }
+        </Switch>
         </div>
       </Router>
   	);
@@ -91,29 +116,33 @@ class App extends React.Component {
 export default App;
 
 
-// {hw.lastname === housewifeLastName}
-
-
-// this.findHW(routerProps.match.params.lastname)
-
-// function App() {
-//   return (
-    // <Router>
-    //     <div>
-    //       <Route exact path="/" render={() => <Redirect to="/home" />} />
-    //       <Route path="/home">
-    //         <Menu />
-    //         <Homepage />
-    //       </Route>
-    //       <Route path="/housewives">
-    //         <Menu />
-    //         <IndexPage />
-    //       </Route>
-    //     </div>
-    //   </Router>
-//   );
-// }
-
-// export default App;
+// <Router>
+//   <div>
+//     <Route exact path="/" render={() => <Redirect to="/home" />} />
+//     <Route path="/home">
+      // {
+      //   this.state.menu_on === false ?
+      //   <Homepage
+      //   openMenu={this.openMenu}
+      //   menu_on={this.state.menu_on}/>
+      //   :
+      //   <Menu
+      //   openMenu={this.openMenu}
+      //   menu_on={this.state.menu_on}
+      //   />
+      // }
+//     </Route>
+//     <Switch>
+//     <Route path={`/housewives/:id`}
+//     render={this.findHW}
+//     openMenu={this.openMenu}
+//     menu_on={this.state.menu_on}/>
+//
+//     <Route path="/housewives" render={this.indexOrMenu}
+//     openMenu={this.openMenu}
+//     menu_on={this.state.menu_on}/>
+//     </Switch>
+//   </div>
+// </Router>
 
 
