@@ -247,3 +247,76 @@ h6 {
 a:link {
   text-decoration: none;
 }
+
+/* Show page styling */
+h2 {
+font-family: canada-type-gibson, sans-serif;
+font-weight: 900;
+font-style: normal;
+color: #000000;
+font-size: 8vw;
+line-height: 9vw;
+}
+
+#housewifeimg {
+  display: contents;
+  padding-top: 10vw;
+  padding-right: 10vw;
+  margin-bottom: 0px;
+}
+
+#housewifetitle {
+  display: contents;
+  /* float: right; */
+  /* position: relative; */
+  left:-10vw;
+  top:-200vw;
+}
+
+#housewifesubtitle {
+  display: block;
+  /* float: right; */
+  /* position: relative; */
+  left: 3vw;
+  top: -20vw;
+}
+
+.housewifeshowimg {
+  object-fit: cover;
+  object-position: 50% 0;
+  width: 15vw;
+  height: 40vw;
+  border: 0px;
+  border-style: solid;
+  margin-right: 0.5vw;
+}
+
+h8 em {
+  font-family: canada-type-gibson, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.5vw;
+  text-align: left;
+  margin-left: 0px;
+  text-align: center;
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+  text-decoration: none;
+}
+
+h8  {
+  font-family: canada-type-gibson, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #000000;
+  font-size: 1.5vw;
+
+  text-align: left;
+  font-style: normal;
+  text-decoration: none;
+}

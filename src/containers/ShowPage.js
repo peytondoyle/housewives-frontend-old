@@ -30,22 +30,52 @@ export default function FullWidthGrid(props) {
       onClick={props.openMenu}></img>
     </div>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs>
+        </Grid>
+
+        <Grid item xs={2}>
           <Paper className={classes.paper}>
-          <div id="maintitle">
-          <img src={props.selectedHW.image} class="housewifeindeximg"></img>
-            <h1 id="title">
-             {props.selectedHW.firstname}<br></br>{props.selectedHW.lastname}</h1>
-          </div>
-          <hr></hr>
-          <div id="maintitle">
-          <div id="subtitle">
-            <p class="psubtitle">Most everything you’d want to know about the American <em>Real Housewives</em> franchises.</p>
-          </div>
+          <div id="housewifeimg">
+          <img src={props.selectedHW.image} class="housewifeshowimg"></img>
           </div>
           </Paper>
         </Grid>
+
+        <Grid item xs={5}>
+          <Paper className={classes.paper} style={{textAlign: "left", paddingTop: "20vw"}}>
+          <div id="housewifetitle">
+            <h2 id="title">{props.selectedHW.firstname}</h2>
+          </div>
+
+          <div id="housewifesubtitle">
+            <h8><em>Real Housewives of {props.selectedHW.city}</em><br></br>
+            {props.selectedHW.firstname} {props.selectedHW.lastname} is {props.selectedHW.current ? "a current housewife." : "not a current housewife."}<br></br>
+
+            </h8>
+          </div>
+          </Paper>
+        </Grid>
+
+        <Grid item xs>
+        </Grid>
       </Grid>
+
+      <Grid container spacing={3}>
+      <Grid item xs>
+      </Grid>
+
+      <Grid item xs>
+        <Paper className={classes.paper}>
+        <div id="housewifeimg">
+        <img src={props.selectedHW.image} class="housewifeshowimg"></img>
+        </div>
+        </Paper>
+      </Grid>
+
+      <Grid item xs>
+      </Grid>
+    </Grid>
+
     </div>
     :
     "yolo"
