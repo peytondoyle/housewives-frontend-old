@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 export default function FullWidthGrid(props) {
 
   const classes = useStyles();
-
+  // {debugger}
   return (
     props.selectedHW ?
     <div className={classes.root}>
@@ -50,6 +50,10 @@ export default function FullWidthGrid(props) {
           <div id="housewifesubtitle">
             <h8><em>Real Housewives of {props.selectedHW.city}</em><br></br>
             {props.selectedHW.firstname} {props.selectedHW.lastname} is {props.selectedHW.current ? "a current housewife." : "not a current housewife."}<br></br>
+            Seasons as an active housewife:            {props.selectedHW.seasons.map(function(item) {
+          return <div className="item">{item}</div>;
+        })}
+
 
             </h8>
           </div>
@@ -82,3 +86,4 @@ export default function FullWidthGrid(props) {
 
   );
 }
+

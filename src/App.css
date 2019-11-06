@@ -293,6 +293,7 @@ line-height: 9vw;
 
 h8 em {
   font-family: canada-type-gibson, sans-serif;
+  display: inline-flex;
   font-weight: 900;
   font-style: normal;
   color: #ffffff;
@@ -307,16 +308,33 @@ h8 em {
   -webkit-text-fill-color: transparent;
   font-style: normal;
   text-decoration: none;
+  line-height: 120%;
 }
 
 h8  {
   font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
   font-weight: 900;
   font-style: normal;
   color: #000000;
   font-size: 1.5vw;
-
+  line-height: 120%;
   text-align: left;
   font-style: normal;
   text-decoration: none;
+}
+
+.item {
+  display: inline-block;
+}
+
+.item + .item::before {
+  display: inline-block;
+  white-space: pre;
+  content: ", ";
+}
+
+br {
+   display: block;
+   margin: 10em 0;
 }
