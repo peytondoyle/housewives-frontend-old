@@ -285,7 +285,7 @@ line-height: 9vw;
   object-fit: cover;
   object-position: 50% 0;
   width: 15vw;
-  height: 40vw;
+  height: 42vw;
   border: 0px;
   border-style: solid;
   margin-right: 0.5vw;
@@ -317,7 +317,7 @@ h8  {
   font-weight: 900;
   font-style: normal;
   color: #000000;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   line-height: 120%;
   text-align: left;
   font-style: normal;
@@ -337,4 +337,68 @@ h8  {
 br {
    display: block;
    margin: 10em 0;
+}
+
+#heart {
+  color: #ef9db3;
+  font-size: 3vw;
+  margin-top: 0.7vw;
+  margin-bottom: 0.7vw;
+}
+
+#showpagebuttons {
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-flex;
+  font-weight: 900;
+  padding: 0.75vw;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.4vw;
+  text-align: left;
+  margin: 0px;
+  text-align: center;
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  font-style: normal;
+  text-decoration: none;
+  line-height: 120%;
+}
+
+.wrapper{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top:10px;
+}
+.btn-copy{
+  background-color: #38AFDD;
+  border: transparent;
+  border-bottom: 2px solid #0086B7;
+  border-radius: 2px;
+  padding: 10px;
+  min-width: 100px;
+  color: #fff;
+}
+.btn-copy:hover, .btn-copy:focus{
+  background-color: #48A1C1;
+  border-bottom: 2px solid #38AFDD;
+  /*transition cross browser*/
+  transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  -moz-transition:all .3s ease-in;
+  -o-transition: all .3s ease-in;
+}
+
+#taglines {
+  font-family: canada-type-gibson, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-style: normal;
+  color: #000000;
+  font-size: 1vw;
+  line-height: 20%;
+  text-align: left;
+  font-style: normal;
+  text-decoration: none;
 }
