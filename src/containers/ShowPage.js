@@ -162,7 +162,12 @@ class ShowPage extends React.Component {
 
             </div>
             <div>
+
             <h8><em>GIFs</em></h8><br></br>
+            {this.props.selectedHW.seasons.length === 1 ?
+            <p id="taglines">Since {this.props.selectedHW.firstname} is a one season wonder, her GIF selection might be limited.</p>
+            :
+            null}
             <img id="hwgifs" src={
               this.state.gifs && this.state.gifs.data[1] ?
               this.state.gifs.data[1].images.downsized.url
