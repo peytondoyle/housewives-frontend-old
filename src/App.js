@@ -81,7 +81,7 @@ class App extends React.Component {
     }
   }
 
-  filterTenure= (e) => {
+  filterTenure = (e) => {
     if (this.state.reverse) {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(function(a, b) {
@@ -98,6 +98,33 @@ class App extends React.Component {
       this.setState({allHousewives: sorted, reverse: true})
     }
   }
+
+  citySort = (hw) => {
+    if (hw.city === "Atlanta") {
+      return hw.city === "Atlanta";
+    }
+    // else if (hw.city === "Beverly Hills") {
+    //   return hw.city === "Beverly Hills";
+    // }
+    // else if (hw.city === "Orange County") {
+    //   return hw.city === "Orange County";
+    // }
+  }
+
+
+  // settingCityHW = () => {
+  //   let allHousewives = this.state.allHousewives
+  //   this.setState(this.initialState)
+  //   let cityHW = allHousewives.filter(this.citySort)
+  //   console.log(cityHW)
+  //   this.setState({allHousewives: cityHW, menu_on: false})
+  // }
+
+  settingCityHW = () => {
+    let allHousewives = this.state.allHousewives
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Atlanta"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
 
   openMenu = () => {
     {this.state.menu_on === false ?
@@ -145,6 +172,7 @@ class App extends React.Component {
               <Menu
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
+              settingCityHW={this.settingCityHW}
               />
             }
           </Route>
@@ -159,6 +187,7 @@ class App extends React.Component {
             <Menu
             openMenu={this.openMenu}
             menu_on={this.state.menu_on}
+            settingCityHW={this.settingCityHW}
             />
           }
 
@@ -171,6 +200,7 @@ class App extends React.Component {
             <Menu
             openMenu={this.openMenu}
             menu_on={this.state.menu_on}
+            settingCityHW={this.settingCityHW}
             />
           }
         </Switch>
@@ -212,7 +242,6 @@ export default App;
 //     </Switch>
 //   </div>
 // </Router>
-
 
 
 

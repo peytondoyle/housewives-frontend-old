@@ -32,16 +32,16 @@ export default function FullWidthGrid(props) {
       <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paper} id="menuleft">
-            <p id="menucities">Atlanta</p>
-            <p id="menucities">Beverly Hills</p>
-            <p id="menucities">Dallas</p>
-            <p id="menucities">New Jersey</p>
-            <p id="menucities">New York</p>
-            <p id="menucities">Orange County</p>
-            <p id="menucities">Potomac</p>
+            <p id="menucities" onClick={props.settingCityHW}>Atlanta</p>
+            <p id="menucities" onClick={props.settingCityHW}>Beverly Hills</p>
+            <p id="menucities" onClick={props.settingCityHW}>Dallas</p>
+            <p id="menucities" onClick={props.settingCityHW}>New Jersey</p>
+            <p id="menucities" onClick={props.settingCityHW}>New York</p>
+            <p id="menucities" onClick={props.settingCityHW}>Orange County</p>
+            <p id="menucities" onClick={props.settingCityHW}>Potomac</p>
             <hr id="hrmenu"></hr>
-            <p id="menucities">D.C.</p>
-            <p id="menucities">Miami</p>
+            <p id="menucities" onClick={props.settingCityHW}>D.C.</p>
+            <p id="menucities" onClick={props.settingCityHW}>Miami</p>
           </Paper>
       </Grid>
       <Grid item xs={12} sm={6} id="menuright">
