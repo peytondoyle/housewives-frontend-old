@@ -284,7 +284,7 @@ line-height: 9vw;
 .housewifeshowimg {
   object-fit: cover;
   object-position: 50% 0;
-  width: 15vw;
+  width: 20vw;
   height: 42vw;
   border: 0px;
   border-style: solid;
@@ -346,6 +346,13 @@ br {
   margin-bottom: 0.7vw;
 }
 
+#greyheart {
+  color: #888888;
+  font-size: 3vw;
+  margin-top: 0.7vw;
+  margin-bottom: 0.7vw;
+}
+
 #showpagebuttons {
   font-family: canada-type-gibson, sans-serif;
   display: inline-flex;
@@ -401,4 +408,15 @@ br {
   text-align: left;
   font-style: normal;
   text-decoration: none;
+}
+
+#hwgifs {
+  object-fit: cover;
+  object-position: 50% 0;
+  width: 15vw;
+  height: 9.375vw;
+  border: 0px;
+  border-style: solid;
+  margin-right: 0.5vw;
+  margin-bottom: 0.5vw;
 }

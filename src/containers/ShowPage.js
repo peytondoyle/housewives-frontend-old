@@ -1,9 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/styles';
+import { Rating } from '@material-ui/lab';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
 
 const styles = theme => ({
   root: {
@@ -16,26 +22,68 @@ const styles = theme => ({
     textAlign: 'center',
     border: 0,
     boxShadow: 'none',
-  }
+  },
 });
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#ff6d75',
+  },
+  iconHover: {
+    color: '#ff3d47',
+  },
+})(Rating);
+
+function getLabelText(value) {
+  return `${value} Heart${value !== 1 ? 's' : ''}`;
+}
 
 
 class ShowPage extends React.Component {
 
-  componentDidMount(){
+  // getData(){
+  //   setTimeout(() => {
+  //     console.log('Our data is fetched');
+  //     this.makeGif();
+  //   }, 4000)
+  // }
 
+  constructor(){
+    super()
+      this.state={
+        liked: false,
+        gifs: null
+      }
   }
+
+  componentDidMount(){
+    // this.getData();
+  }
+
+  addLike(e){
+    console.log("click!")
+    e.target.style.color === '#888888' ?
+    this.setState({liked: true})
+    :
+    this.setState({liked: false})
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("firedddd")
+    if (prevProps.selectedHW !== this.props.selectedHW) {
+      this.makeGif()
+    }}
 
   makeGif = () => {
     let firstHalf = "https://api.giphy.com/v1/gifs/search?api_key=MBLG8iL6WK4fhlNTBExR5HjnVI5P6CIf&q="
     let firstName = this.props.selectedHW.firstname
-    let firstChunk = firstHalf.concat(firstName)
+    let space = "%20"
+    let firstNameAndSpace = firstName.concat(space)
+    let firstChunk = firstHalf.concat(firstNameAndSpace)
     let lastName = this.props.selectedHW.lastname
-    let city = this.props.selectedHW.city
-    let secondChunk = lastName.concat(city)
-    let secondHalf = "&limit=12&offset=0&rating=G&lang=en"
-    let combining = secondChunk.concat(secondHalf)
-    let GIPHY_URL =  firstChunk.concat(combining)
+    let secondHalf = "&limit=24&offset=0&lang=en"
+    let secondChunk = lastName.concat(secondHalf)
+    let GIPHY_URL =  firstChunk.concat(secondChunk)
     // debugger
 
     fetch(GIPHY_URL)
@@ -53,8 +101,9 @@ class ShowPage extends React.Component {
 
   	return (
       this.props.selectedHW ?
+
       <div className={classes.root}>
-      {this.makeGif()}
+
       <div class="menubutton">
         <img src="https://i.ibb.co/6szFNdq/Menu-Icons.png" class="menubuttonimage"
         onClick={this.props.openMenu}></img>
@@ -63,7 +112,7 @@ class ShowPage extends React.Component {
           <Grid item xs>
           </Grid>
 
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <Paper className={classes.paper}>
             <div id="housewifeimg">
             <img src={this.props.selectedHW.image} class="housewifeshowimg"></img>
@@ -83,11 +132,9 @@ class ShowPage extends React.Component {
               Seasons as an active housewife:            {this.props.selectedHW.seasons.map(function(item) {
                 return <div className="item">{item}</div>;
               })}
-              <p id="heart">❤<h8><em># Likes</em></h8></p>
+              <p id="heart"><h10 onClick={this.addLike} id="greyheart">❤</h10><h8><em># Likes</em></h8></p>
               </h8>
-              <p id="showpagebuttons">Add to Favorites</p> &nbsp; <p id="showpagebuttons">Share this Housewife</p>
-
-
+              <p id="showpagebuttons">Add to Favorites</p>
 
             </div>
             </Paper>
@@ -107,15 +154,51 @@ class ShowPage extends React.Component {
         <Grid item xs={7}>
           <Paper className={classes.paper} style={{textAlign: "left"}}>
             <div id="housewifesubtitle">
+              <br></br>
               <h8><em>Taglines</em></h8><br></br>
 
               {this.props.selectedHW.taglines.map(tagline =>
               {return <div><h8>Season {tagline.season}</h8> <br></br> <p id="taglines">{tagline.tagline}</p></div>})}
 
             </div>
-
             <div>
-            <img src={this.state.gifs.data[1].images.downsized.url}></img>
+            <h8><em>GIFs</em></h8><br></br>
+            <img id="hwgifs" src={
+              this.state.gifs && this.state.gifs.data[1] ?
+              this.state.gifs.data[1].images.downsized.url
+              :
+              null
+            }></img>
+            <img id="hwgifs" src={
+              this.state.gifs && this.state.gifs.data[2] ?
+              this.state.gifs.data[2].images.downsized.url
+              :
+              null
+            }></img>
+            <img id="hwgifs" src={
+              this.state.gifs && this.state.gifs.data[3] ?
+              this.state.gifs.data[3].images.downsized.url
+              :
+              null
+            }></img>
+            <img id="hwgifs" src={
+              this.state.gifs && this.state.gifs.data[7] ?
+              this.state.gifs.data[7].images.downsized.url
+              :
+              null
+            }></img>
+            <img id="hwgifs" src={
+              this.state.gifs && this.state.gifs.data[5] ?
+              this.state.gifs.data[5].images.downsized.url
+              :
+              null
+            }></img>
+            <img id="hwgifs" src={
+              this.state.gifs && this.state.gifs.data[6] ?
+              this.state.gifs.data[6].images.downsized.url
+              :
+              null
+            }></img>
             </div>
           </Paper>
         </Grid>

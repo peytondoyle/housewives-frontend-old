@@ -20,10 +20,8 @@ const useStyles = makeStyles(theme => ({
 
 let handleClick = (e) => {
     e.preventDefault();
-    // debugger
     let value = e.target.parentElement.children[0].dataset.hwid
     this.setState({selectedId: value})
-    // NEED TO FIGURE OUT THE LINKING
   };
 
 
