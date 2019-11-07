@@ -21,7 +21,8 @@ class App extends React.Component {
     super()
       this.state={
         menu_on: false,
-        allHousewives: []
+        allHousewives: [],
+        reverse: false
       }
   }
 
@@ -53,24 +54,49 @@ class App extends React.Component {
 }
 
   filterName = (e) => {
-    let allHousewives = this.state.allHousewives
-    let sorted = allHousewives.sort(this.dynamicSort("firstname"));
-    console.log(sorted)
-    this.setState({allHousewives: sorted})
+    if (this.state.reverse) {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(this.dynamicSort("firstname"));
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: false})
+    } else {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(this.dynamicSort("-firstname"));
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: true})
+    }
   }
 
   filterCity = (e) => {
-    let allHousewives = this.state.allHousewives
-    let sorted = allHousewives.sort(this.dynamicSort("city"));
-    console.log(sorted)
-    this.setState({allHousewives: sorted})
+    if (this.state.reverse) {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(this.dynamicSort("-city"));
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: false})
+    } else {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(this.dynamicSort("city"));
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: true})
+    }
   }
 
   filterTenure= (e) => {
-    let allHousewives = this.state.allHousewives
-    let sorted = allHousewives.sort(this.dynamicSort("seasons"));
-    console.log(sorted)
-    this.setState({allHousewives: sorted})
+    if (this.state.reverse) {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(function(a, b) {
+        return b.totalseasons - a.totalseasons;
+      });
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: false});
+    } else {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(function(a, b) {
+        return a.totalseasons - b.totalseasons;
+      });
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: true})
+    }
   }
 
   openMenu = () => {
