@@ -145,7 +145,7 @@ p.filterbuttontext {
   font-weight: 900;
   font-style: normal;
   color: #ffffff;
-  font-size: 3vw;
+  font-size: 1.5vw;
   line-height: 1vw;
   text-align: left;
   margin: 0px;
@@ -154,10 +154,16 @@ p.filterbuttontext {
 
 #filters {
   height: 1vw;
-  padding: 2vw;
+  width: 8vw;
+  padding: 1vw;
   background-image: linear-gradient(to right, #00afce , #ef9db3);
   align: center;
-  margin: 3.5vw;
+  margin-left: 2.7vw;
+  margin-right: 2.7vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  border-radius: 1vw;
+  /* margin-right: 0vw !important; */
 }
 
 .filterwrapper {

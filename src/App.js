@@ -22,7 +22,11 @@ class App extends React.Component {
       this.state={
         menu_on: false,
         allHousewives: [],
-        reverse: false
+        reverse: false,
+        cityButton: "▲ City",
+        tenureButton: "▲ Tenure",
+        ratingButton: "▲ Rating",
+        nameButton: "▲ Name"
       }
   }
 
@@ -58,12 +62,12 @@ class App extends React.Component {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(this.dynamicSort("firstname"));
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: false})
+      this.setState({allHousewives: sorted, reverse: false, nameButton: "▲ Name"})
     } else {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(this.dynamicSort("-firstname"));
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: true})
+      this.setState({allHousewives: sorted, reverse: true, nameButton: "▼ Name"})
     }
   }
 
@@ -72,12 +76,12 @@ class App extends React.Component {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(this.dynamicSort("-city"));
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: false})
+      this.setState({allHousewives: sorted, reverse: false, cityButton: "▼ City"})
     } else {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(this.dynamicSort("city"));
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: true})
+      this.setState({allHousewives: sorted, reverse: true, cityButton: "▲ City"})
     }
   }
 
@@ -88,15 +92,22 @@ class App extends React.Component {
         return b.totalseasons - a.totalseasons;
       });
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: false});
+      this.setState({allHousewives: sorted, reverse: false, tenureButton: "▼ Tenure"});
     } else {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(function(a, b) {
         return a.totalseasons - b.totalseasons;
       });
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: true})
+      this.setState({allHousewives: sorted, reverse: true, tenureButton: "▲ Tenure"})
     }
+  }
+
+  resetIndex = (e) => {
+    let allHousewives = this.state.allHousewives
+    let sorted = allHousewives.sort(this.dynamicSort("firstname"));
+    console.log(sorted)
+    this.setState({allHousewives: sorted, reverse: false, nameButton: "▲ Name", tenureButton: "▲ Tenure", cityButton: "▲ City"})
   }
 
   // citySort = (hw) => {
@@ -189,7 +200,12 @@ class App extends React.Component {
       filterName={this.filterName}
       filterCity={this.filterCity}
       filterTenure={this.filterTenure}
-      routerProps={routerProps}/> :
+      routerProps={routerProps}
+      cityButton={this.state.cityButton}
+      nameButton={this.state.nameButton}
+      ratingButton={this.state.ratingButton}
+      tenureButton={this.state.tenureButton}
+      resetIndex={this.resetIndex}/> :
       <Menu
       openMenu={this.openMenu}
       menu_on={this.state.menu_on}

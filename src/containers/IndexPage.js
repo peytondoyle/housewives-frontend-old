@@ -59,16 +59,19 @@ export default function FullWidthGrid(props) {
         <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
           <Box display="flex" p={1} style={{marginTop: '-4.3vw'}}>
             <div id="filters">
-              <p class="filterbuttontext" onClick={props.filterCity}>City</p>
+              <p class="filterbuttontext" onClick={props.filterCity}>{props.cityButton}</p>
             </div>
             <div id="filters">
-              <p class="filterbuttontext" onClick={props.filterTenure}>Tenure</p>
+              <p class="filterbuttontext" onClick={props.filterTenure}>{props.tenureButton}</p>
             </div>
             <div id="filters">
-              <p class="filterbuttontext">Rating</p>
+              <p class="filterbuttontext" onClick={props.filterName}>{props.nameButton}</p>
             </div>
             <div id="filters">
-              <p class="filterbuttontext" onClick={props.filterName}>Name</p>
+              <p class="filterbuttontext" onClick={props.filterRating}>{props.ratingButton}</p>
+            </div>
+            <div id="filters">
+              <p class="filterbuttontext" onClick={props.resetIndex}>Reset</p>
             </div>
           </Box>
         </div>
