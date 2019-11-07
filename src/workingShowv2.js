@@ -2,59 +2,47 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/styles';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    border: 0,
-    boxShadow: 'none'
-  },
-  paper: {
-    // padding: theme.spacing(2),
-    textAlign: 'center',
-    border: 0,
-    boxShadow: 'none',
-  }
-});
-
 
 class ShowPage extends React.Component {
 
-  componentDidMount(){
-
-  }
-
-  makeGif = () => {
+  makeGif(){
     let firstHalf = "https://api.giphy.com/v1/gifs/search?api_key=MBLG8iL6WK4fhlNTBExR5HjnVI5P6CIf&q="
     let firstName = this.props.selectedHW.firstname
-    let firstChunk = firstHalf.concat(firstName)
     let lastName = this.props.selectedHW.lastname
-    let city = this.props.selectedHW.city
-    let secondChunk = lastName.concat(city)
     let secondHalf = "&limit=12&offset=0&rating=G&lang=en"
-    let combining = secondChunk.concat(secondHalf)
-    let GIPHY_URL =  firstChunk.concat(combining)
-    // debugger
+    let firstChunk = firstHalf.concat(firstName)
+    let secondChunk = lastName.concat(secondHalf)
+    let GIPHY_URL =  firstChunk.concat(secondChunk)
 
     fetch(GIPHY_URL)
     .then(res => res.json())
     .then(data => {
-      // debugger
       console.log(data)
-      this.setState({gifs: data})
-    })
-  }
+      })
+    }
+
+    const useStyles = makeStyles(theme => ({
+      root: {
+        flexGrow: 1,
+        border: 0,
+        boxShadow: 'none'
+      },
+      paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        border: 0,
+        boxShadow: 'none',
+        color: theme.palette.text.secondary
+      }
+    }));
+
+    const classes = useStyles();
 
   render(){
-
-    const {classes} = this.props;
 
   	return (
       this.props.selectedHW ?
       <div className={classes.root}>
-      {this.makeGif()}
       <div class="menubutton">
         <img src="https://i.ibb.co/6szFNdq/Menu-Icons.png" class="menubuttonimage"
         onClick={this.props.openMenu}></img>
@@ -66,6 +54,7 @@ class ShowPage extends React.Component {
           <Grid item xs={2}>
             <Paper className={classes.paper}>
             <div id="housewifeimg">
+            {console.log(this.makeGif)}
             <img src={this.props.selectedHW.image} class="housewifeshowimg"></img>
             </div>
             </Paper>
@@ -113,10 +102,6 @@ class ShowPage extends React.Component {
               {return <div><h8>Season {tagline.season}</h8> <br></br> <p id="taglines">{tagline.tagline}</p></div>})}
 
             </div>
-
-            <div>
-            <img src={this.state.gifs.data[1].images.downsized.url}></img>
-            </div>
           </Paper>
         </Grid>
 
@@ -133,8 +118,4 @@ class ShowPage extends React.Component {
 
 };
 
-ShowPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(ShowPage);
+export default ShowPage;
