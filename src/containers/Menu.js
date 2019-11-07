@@ -32,16 +32,16 @@ export default function FullWidthGrid(props) {
       <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paper} id="menuleft">
-            <p id="menucities" onClick={props.settingCityHW}>Atlanta</p>
-            <p id="menucities" onClick={props.settingCityHW}>Beverly Hills</p>
-            <p id="menucities" onClick={props.settingCityHW}>Dallas</p>
-            <p id="menucities" onClick={props.settingCityHW}>New Jersey</p>
-            <p id="menucities" onClick={props.settingCityHW}>New York</p>
-            <p id="menucities" onClick={props.settingCityHW}>Orange County</p>
-            <p id="menucities" onClick={props.settingCityHW}>Potomac</p>
+            <p id="menucities" onClick={props.settingCityATL}>Atlanta</p>
+            <p id="menucities" onClick={props.settingCityBH}>Beverly Hills</p>
+            <p id="menucities" onClick={props.settingCityD}>Dallas</p>
+            <p id="menucities" onClick={props.settingCityNJ}>New Jersey</p>
+            <p id="menucities" onClick={props.settingCityNY}>New York</p>
+            <p id="menucities" onClick={props.settingCityOC}>Orange County</p>
+            <p id="menucities" onClick={props.settingCityP}>Potomac</p>
             <hr id="hrmenu"></hr>
-            <p id="menucities" onClick={props.settingCityHW}>D.C.</p>
-            <p id="menucities" onClick={props.settingCityHW}>Miami</p>
+            <p id="menucities" onClick={props.settingCityDC}>D.C.</p>
+            <p id="menucities" onClick={props.settingCityM}>Miami</p>
           </Paper>
       </Grid>
       <Grid item xs={12} sm={6} id="menuright">

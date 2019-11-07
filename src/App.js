@@ -32,7 +32,7 @@ class App extends React.Component {
   .then(data => {
     console.log(data)
     let sorted = data.sort(this.dynamicSort("firstname"))
-    this.setState({allHousewives: sorted})
+    this.setState({allHousewives: sorted, allHousewivesProtected: sorted})
     })
   }
 
@@ -99,18 +99,17 @@ class App extends React.Component {
     }
   }
 
-  citySort = (hw) => {
-    if (hw.city === "Atlanta") {
-      return hw.city === "Atlanta";
-    }
+  // citySort = (hw) => {
+  //   if (hw.city === "Atlanta") {
+  //     return hw.city === "Atlanta";
+  //   }
     // else if (hw.city === "Beverly Hills") {
     //   return hw.city === "Beverly Hills";
     // }
     // else if (hw.city === "Orange County") {
     //   return hw.city === "Orange County";
     // }
-  }
-
+  // }
 
   // settingCityHW = () => {
   //   let allHousewives = this.state.allHousewives
@@ -120,10 +119,58 @@ class App extends React.Component {
   //   this.setState({allHousewives: cityHW, menu_on: false})
   // }
 
-  settingCityHW = () => {
-    let allHousewives = this.state.allHousewives
+  settingCityATL = () => {
+    let allHousewives = this.state.allHousewivesProtected
     let cityHW = allHousewives.filter(function(hw){
       return hw.city === "Atlanta"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityBH = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Beverly Hills"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityD = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Dallas"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityDC = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Washington, D.C."})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityM = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Miami"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityNJ = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "New Jersey"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityNY = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "New York"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityOC = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Orange County"})
+    this.setState({allHousewives: cityHW, menu_on: false})}
+
+  settingCityP = () => {
+    let allHousewives = this.state.allHousewivesProtected
+    let cityHW = allHousewives.filter(function(hw){
+      return hw.city === "Potomac"})
     this.setState({allHousewives: cityHW, menu_on: false})}
 
   openMenu = () => {
@@ -145,7 +192,16 @@ class App extends React.Component {
       routerProps={routerProps}/> :
       <Menu
       openMenu={this.openMenu}
-      menu_on={this.state.menu_on}/>)
+      menu_on={this.state.menu_on}
+      settingCityATL={this.settingCityATL}
+      settingCityBH={this.settingCityBH}
+      settingCityD={this.settingCityD}
+      settingCityDC={this.settingCityDC}
+      settingCityM={this.settingCityM}
+      settingCityNJ={this.settingCityNJ}
+      settingCityNY={this.settingCityNY}
+      settingCityOC={this.settingCityOC}
+      settingCityP={this.settingCityP}/>)
   }
 
   findHW = (routerProps) => {
@@ -172,7 +228,15 @@ class App extends React.Component {
               <Menu
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              settingCityHW={this.settingCityHW}
+              settingCityATL={this.settingCityATL}
+              settingCityBH={this.settingCityBH}
+              settingCityD={this.settingCityD}
+              settingCityDC={this.settingCityDC}
+              settingCityM={this.settingCityM}
+              settingCityNJ={this.settingCityNJ}
+              settingCityNY={this.settingCityNY}
+              settingCityOC={this.settingCityOC}
+              settingCityP={this.settingCityP}
               />
             }
           </Route>
@@ -187,7 +251,15 @@ class App extends React.Component {
             <Menu
             openMenu={this.openMenu}
             menu_on={this.state.menu_on}
-            settingCityHW={this.settingCityHW}
+            settingCityATL={this.settingCityATL}
+            settingCityBH={this.settingCityBH}
+            settingCityD={this.settingCityD}
+            settingCityDC={this.settingCityDC}
+            settingCityM={this.settingCityM}
+            settingCityNJ={this.settingCityNJ}
+            settingCityNY={this.settingCityNY}
+            settingCityOC={this.settingCityOC}
+            settingCityP={this.settingCityP}
             />
           }
 
@@ -200,7 +272,15 @@ class App extends React.Component {
             <Menu
             openMenu={this.openMenu}
             menu_on={this.state.menu_on}
-            settingCityHW={this.settingCityHW}
+            settingCityATL={this.settingCityATL}
+            settingCityBH={this.settingCityBH}
+            settingCityD={this.settingCityD}
+            settingCityDC={this.settingCityDC}
+            settingCityM={this.settingCityM}
+            settingCityNJ={this.settingCityNJ}
+            settingCityNY={this.settingCityNY}
+            settingCityOC={this.settingCityOC}
+            settingCityP={this.settingCityP}
             />
           }
         </Switch>
