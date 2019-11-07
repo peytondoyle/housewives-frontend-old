@@ -130,6 +130,8 @@ class App extends React.Component {
   //   this.setState({allHousewives: cityHW, menu_on: false})
   // }
 
+
+
   settingCityATL = () => {
     let allHousewives = this.state.allHousewivesProtected
     let cityHW = allHousewives.filter(function(hw){
@@ -217,7 +219,8 @@ class App extends React.Component {
       settingCityNJ={this.settingCityNJ}
       settingCityNY={this.settingCityNY}
       settingCityOC={this.settingCityOC}
-      settingCityP={this.settingCityP}/>)
+      settingCityP={this.settingCityP}
+      />)
   }
 
   findHW = (routerProps) => {
@@ -228,6 +231,9 @@ class App extends React.Component {
     menu_on={this.state.menu_on}/>}
 
   render(){
+
+
+
   	return (
       <Router>
         <div>
@@ -253,6 +259,7 @@ class App extends React.Component {
               settingCityNY={this.settingCityNY}
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
+              routerProps
               />
             }
           </Route>

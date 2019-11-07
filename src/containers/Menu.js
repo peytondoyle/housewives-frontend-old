@@ -3,6 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { spacing } from '@material-ui/system';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,6 +29,7 @@ export default function FullWidthGrid(props) {
   // debugger
   const classes = useStyles();
 
+
   return (
     <div className={classes.root}>
     <div class="menubutton">
@@ -32,16 +39,16 @@ export default function FullWidthGrid(props) {
       <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paper} id="menuleft">
-            <p id="menucities" onClick={props.settingCityATL}>Atlanta</p>
-            <p id="menucities" onClick={props.settingCityBH}>Beverly Hills</p>
-            <p id="menucities" onClick={props.settingCityD}>Dallas</p>
-            <p id="menucities" onClick={props.settingCityNJ}>New Jersey</p>
-            <p id="menucities" onClick={props.settingCityNY}>New York</p>
-            <p id="menucities" onClick={props.settingCityOC}>Orange County</p>
-            <p id="menucities" onClick={props.settingCityP}>Potomac</p>
+            <Link to="/housewives" onClick={props.settingCityATL}><p id="menucities">Atlanta</p></Link>
+            <Link to="/housewives" onClick={props.settingCityBH}><p id="menucities" >Beverly Hills</p></Link>
+            <Link to="/housewives" onClick={props.settingCityD}><p id="menucities">Dallas</p></Link>
+            <Link to="/housewives" onClick={props.settingCityNJ}><p id="menucities">New Jersey</p></Link>
+            <Link to="/housewives" onClick={props.settingCityNY}><p id="menucities">New York</p></Link>
+            <Link to="/housewives" onClick={props.settingCityOC}><p id="menucities">Orange County</p></Link>
+            <Link to="/housewives" onClick={props.settingCityP}><p id="menucities">Potomac</p></Link>
             <hr id="hrmenu"></hr>
-            <p id="menucities" onClick={props.settingCityDC}>D.C.</p>
-            <p id="menucities" onClick={props.settingCityM}>Miami</p>
+            <Link to="/housewives" onClick={props.settingCityDC}><p id="menucities">D.C.</p></Link>
+            <Link to="/housewives" onClick={props.settingCityM}><p id="menucities">Miami</p></Link>
           </Paper>
       </Grid>
       <Grid item xs={12} sm={6} id="menuright">

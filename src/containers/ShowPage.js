@@ -41,12 +41,12 @@ function getLabelText(value) {
 
 class ShowPage extends React.Component {
 
-  // getData(){
-  //   setTimeout(() => {
-  //     console.log('Our data is fetched');
-  //     this.makeGif();
-  //   }, 4000)
-  // }
+  getData(){
+    setTimeout(() => {
+      console.log('Our data is fetched');
+      this.makeGif();
+    }, 4000)
+  }
 
   constructor(){
     super()
@@ -57,7 +57,7 @@ class ShowPage extends React.Component {
   }
 
   componentDidMount(){
-    // this.getData();
+    this.getData();
   }
 
   addLike(e){
@@ -68,7 +68,7 @@ class ShowPage extends React.Component {
     this.setState({liked: false})
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     console.log("firedddd")
     if (prevProps.selectedHW !== this.props.selectedHW) {
       this.makeGif()
@@ -109,7 +109,7 @@ class ShowPage extends React.Component {
         onClick={this.props.openMenu}></img>
       </div>
         <Grid container spacing={3}>
-          <Grid item xs>
+          <Grid item xs={2}>
           </Grid>
 
           <Grid item xs={3}>
