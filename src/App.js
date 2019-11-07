@@ -30,8 +30,47 @@ class App extends React.Component {
   .then(res => res.json())
   .then(data => {
     console.log(data)
-    this.setState({allHousewives: data})
+    let sorted = data.sort(this.dynamicSort("firstname"))
+    this.setState({allHousewives: sorted})
     })
+  }
+
+  dynamicSort = (property) => {
+    var sortOrder = 1;
+
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+
+    return function (a,b) {
+        if(sortOrder == -1){
+            return b[property].localeCompare(a[property]);
+        }else{
+            return a[property].localeCompare(b[property]);
+        }
+    }
+}
+
+  filterName = (e) => {
+    let allHousewives = this.state.allHousewives
+    let sorted = allHousewives.sort(this.dynamicSort("firstname"));
+    console.log(sorted)
+    this.setState({allHousewives: sorted})
+  }
+
+  filterCity = (e) => {
+    let allHousewives = this.state.allHousewives
+    let sorted = allHousewives.sort(this.dynamicSort("city"));
+    console.log(sorted)
+    this.setState({allHousewives: sorted})
+  }
+
+  filterTenure= (e) => {
+    let allHousewives = this.state.allHousewives
+    let sorted = allHousewives.sort(this.dynamicSort("seasons"));
+    console.log(sorted)
+    this.setState({allHousewives: sorted})
   }
 
   openMenu = () => {
@@ -47,6 +86,9 @@ class App extends React.Component {
       openMenu={this.openMenu}
       menu_on={this.state.menu_on}
       allHousewives={this.state.allHousewives}
+      filterName={this.filterName}
+      filterCity={this.filterCity}
+      filterTenure={this.filterTenure}
       routerProps={routerProps}/> :
       <Menu
       openMenu={this.openMenu}

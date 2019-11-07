@@ -81,7 +81,7 @@ class ShowPage extends React.Component {
     let firstNameAndSpace = firstName.concat(space)
     let firstChunk = firstHalf.concat(firstNameAndSpace)
     let lastName = this.props.selectedHW.lastname
-    let secondHalf = "&limit=24&offset=0&lang=en"
+    let secondHalf = "&limit=24&offset=0&rating=PG&lang=en"
     let secondChunk = lastName.concat(secondHalf)
     let GIPHY_URL =  firstChunk.concat(secondChunk)
     // debugger
@@ -187,8 +187,8 @@ class ShowPage extends React.Component {
               null
             }></img>
             <img id="hwgifs" src={
-              this.state.gifs && this.state.gifs.data[7] ?
-              this.state.gifs.data[7].images.downsized.url
+              this.state.gifs && this.state.gifs.data[4] ?
+              this.state.gifs.data[4].images.downsized.url
               :
               null
             }></img>

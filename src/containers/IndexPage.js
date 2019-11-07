@@ -40,22 +40,6 @@ const useStyles = makeStyles(theme => ({
 export default function FullWidthGrid(props) {
   const classes = useStyles();
 
-  function FormRow() {
-  return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-    </React.Fragment>
-  );
-}
-
   return (
     <div className={classes.root}>
     <div class="menubutton">
@@ -75,16 +59,16 @@ export default function FullWidthGrid(props) {
         <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
           <Box display="flex" p={1} style={{marginTop: '-4.3vw'}}>
             <div id="filters">
-              <p class="filterbuttontext">City</p>
+              <p class="filterbuttontext" onClick={props.filterCity}>City</p>
             </div>
             <div id="filters">
-              <p class="filterbuttontext">Tenure</p>
+              <p class="filterbuttontext" onClick={props.filterTenure}>Tenure</p>
             </div>
             <div id="filters">
               <p class="filterbuttontext">Rating</p>
             </div>
             <div id="filters">
-              <p class="filterbuttontext">Name</p>
+              <p class="filterbuttontext" onClick={props.filterName}>Name</p>
             </div>
           </Box>
         </div>
