@@ -45,7 +45,7 @@ class ShowPage extends React.Component {
     setTimeout(() => {
       console.log('Our data is fetched');
       this.makeGif();
-    }, 4000)
+    }, 3100)
   }
 
   constructor(){
@@ -109,7 +109,7 @@ class ShowPage extends React.Component {
         onClick={this.props.openMenu}></img>
       </div>
         <Grid container spacing={3}>
-          <Grid item xs={3}>
+          <Grid item xs>
           </Grid>
 
           <Grid item xs={3}>
