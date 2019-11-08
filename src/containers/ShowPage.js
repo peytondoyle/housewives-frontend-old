@@ -91,9 +91,9 @@ class ShowPage extends React.Component {
   addLike = (e) => {
     console.log("click!")
     !this.state.liked ?
-    this.setState({liked: true, heartImg: "https://i.ibb.co/JcXrVMq/noun-Heart-2410071.png"})
+    this.setState({liked: true, heartImg: "https://cdn3.imggmi.com/uploads/2019/11/9/9b79beba6a04d7dce4cfb5982d815cef-full.png"})
     :
-    this.setState({liked: false, heartImg: "https://i.ibb.co/WyQQHzY/noun-Heart-2410071-2.png"})
+    this.setState({liked: false, heartImg: "https://cdn3.imggmi.com/uploads/2019/11/9/64b1bcc9f2a29131686ac2a4d3e6a80a-full.png"})
   }
 
   render(){
