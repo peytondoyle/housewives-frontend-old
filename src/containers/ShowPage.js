@@ -53,7 +53,7 @@ class ShowPage extends React.Component {
       this.state={
         liked: false,
         gifs: null,
-        heartImg: "https://i.ibb.co/WyQQHzY/noun-Heart-2410071-2.png",
+        heartImg: "https://cdn3.imggmi.com/uploads/2019/11/9/64b1bcc9f2a29131686ac2a4d3e6a80a-full.png",
       }
   }
 
