@@ -109,7 +109,7 @@ class ShowPage extends React.Component {
         onClick={this.props.openMenu}></img>
       </div>
         <Grid container spacing={3}>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
           </Grid>
 
           <Grid item xs={3}>
