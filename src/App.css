@@ -354,13 +354,13 @@ br {
   font-size: 3vw;
   margin-top: 0.7vw;
   margin-bottom: 0.7vw;
+  background-color: transparent;
 }
 
-#greyheart {
-  color: #888888;
-  font-size: 3vw;
-  margin-top: 0.7vw;
-  margin-bottom: 0.7vw;
+.heartimg {
+  background-color: transparent;
+  width: 10%;
+  cursor: pointer;
 }
 
 #showpagebuttons {

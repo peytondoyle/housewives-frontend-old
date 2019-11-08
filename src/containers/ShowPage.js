@@ -45,14 +45,15 @@ class ShowPage extends React.Component {
     setTimeout(() => {
       console.log('Our data is fetched');
       this.makeGif();
-    }, 3100)
+    }, 7000)
   }
 
   constructor(){
     super()
       this.state={
         liked: false,
-        gifs: null
+        gifs: null,
+        heartImg: "https://i.ibb.co/WyQQHzY/noun-Heart-2410071-2.png",
       }
   }
 
@@ -90,9 +91,9 @@ class ShowPage extends React.Component {
   addLike = (e) => {
     console.log("click!")
     !this.state.liked ?
-    this.setState({liked: true})
+    this.setState({liked: true, heartImg: "https://i.ibb.co/JcXrVMq/noun-Heart-2410071.png"})
     :
-    this.setState({liked: false})
+    this.setState({liked: false, heartImg: "https://i.ibb.co/WyQQHzY/noun-Heart-2410071-2.png"})
   }
 
   render(){
@@ -132,8 +133,8 @@ class ShowPage extends React.Component {
               Seasons as an active housewife:            {this.props.selectedHW.seasons.map(function(item) {
                 return <div className="item">{item}</div>;
               })}
-              <div onClick={this.addLike}>HI</div>
-              <p id="heart"><h10 id="greyheart">❤</h10><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
+              <p id="heart"><img class="heartimg" onClick={this.addLike}
+              src={this.state.heartImg}></img><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
               </h8>
               <p id="showpagebuttons">Add to Favorites</p>
 
