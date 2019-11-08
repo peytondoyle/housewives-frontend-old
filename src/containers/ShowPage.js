@@ -60,14 +60,6 @@ class ShowPage extends React.Component {
     this.getData();
   }
 
-  addLike(e){
-    console.log("click!")
-    e.target.style.color === '#888888' ?
-    this.setState({liked: true})
-    :
-    this.setState({liked: false})
-  }
-
   componentDidUpdate(prevProps, prevState) {
     console.log("firedddd")
     if (prevProps.selectedHW !== this.props.selectedHW) {
@@ -93,6 +85,14 @@ class ShowPage extends React.Component {
       console.log(data)
       this.setState({gifs: data})
     })
+  }
+
+  addLike = (e) => {
+    console.log("click!")
+    !this.state.liked ?
+    this.setState({liked: true})
+    :
+    this.setState({liked: false})
   }
 
   render(){
@@ -132,7 +132,8 @@ class ShowPage extends React.Component {
               Seasons as an active housewife:            {this.props.selectedHW.seasons.map(function(item) {
                 return <div className="item">{item}</div>;
               })}
-              <p id="heart"><h10 onClick={this.addLike} id="greyheart">❤</h10><h8><em># Likes</em></h8></p>
+              <div onClick={this.addLike}>HI</div>
+              <p id="heart"><h10 id="greyheart">❤</h10><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
               </h8>
               <p id="showpagebuttons">Add to Favorites</p>
 

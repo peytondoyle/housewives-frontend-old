@@ -26,7 +26,8 @@ class App extends React.Component {
         cityButton: "▲ City",
         tenureButton: "▲ Tenure",
         ratingButton: "▲ Rating",
-        nameButton: "▲ Name"
+        nameButton: "▲ Name",
+        hwRatings: [],
       }
   }
 
@@ -130,8 +131,6 @@ class App extends React.Component {
   //   this.setState({allHousewives: cityHW, menu_on: false})
   // }
 
-
-
   settingCityATL = () => {
     let allHousewives = this.state.allHousewivesProtected
     let cityHW = allHousewives.filter(function(hw){
@@ -186,6 +185,10 @@ class App extends React.Component {
       return hw.city === "Potomac"})
     this.setState({allHousewives: cityHW, menu_on: false})}
 
+    setRatings = (data) => {
+      this.setState({hwRatings: data})
+    }
+
   openMenu = () => {
     {this.state.menu_on === false ?
       this.setState({menu_on: true}) :
@@ -228,7 +231,10 @@ class App extends React.Component {
     let selectedHousewife = this.state.allHousewives.find(hw => hw.id === housewifeId)
     return <ShowPage selectedHW={selectedHousewife}
     openMenu={this.openMenu}
-    menu_on={this.state.menu_on}/>}
+    menu_on={this.state.menu_on}
+    />}
+
+
 
   render(){
 
@@ -269,7 +275,7 @@ class App extends React.Component {
             <Route path={`/housewives/:id`}
             render={this.findHW}
             openMenu={this.openMenu}
-            menu_on={this.state.menu_on}/>
+            />
             :
             <Menu
             openMenu={this.openMenu}
@@ -290,7 +296,8 @@ class App extends React.Component {
             this.state.menu_on === false ?
             <Route path="/housewives" render={this.indexOrMenu}
             openMenu={this.openMenu}
-            menu_on={this.state.menu_on}/>
+            menu_on={this.state.menu_on}
+            />
             :
             <Menu
             openMenu={this.openMenu}
