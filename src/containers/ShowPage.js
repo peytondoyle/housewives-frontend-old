@@ -53,7 +53,7 @@ class ShowPage extends React.Component {
       this.state={
         liked: false,
         gifs: null,
-        heartImg: "https://cdn3.imggmi.com/uploads/2019/11/9/64b1bcc9f2a29131686ac2a4d3e6a80a-full.png",
+        heartImg: "https://i.imgur.com/2NgeD84.png",
       }
   }
 
@@ -91,9 +91,9 @@ class ShowPage extends React.Component {
   addLike = (e) => {
     console.log("click!")
     !this.state.liked ?
-    this.setState({liked: true, heartImg: "https://cdn3.imggmi.com/uploads/2019/11/9/9b79beba6a04d7dce4cfb5982d815cef-full.png"})
+    this.setState({liked: true, heartImg: "https://i.imgur.com/yMZArBu.png"})
     :
-    this.setState({liked: false, heartImg: "https://cdn3.imggmi.com/uploads/2019/11/9/64b1bcc9f2a29131686ac2a4d3e6a80a-full.png"})
+    this.setState({liked: false, heartImg: "https://i.imgur.com/2NgeD84.png"})
   }
 
   render(){
