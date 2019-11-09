@@ -28,7 +28,7 @@ const styles = theme => ({
 
 
 
-class ProfilePage extends React.Component {
+class LoginPage extends React.Component {
 
 
   constructor(){
@@ -58,7 +58,7 @@ class ProfilePage extends React.Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="title">Profile<br></br>Housewives</h1>
+            <h1 id="title">Login<br></br>Housewives</h1>
           </div>
           <hr></hr>
           <div id="maintitle">
@@ -77,4 +77,4 @@ class ProfilePage extends React.Component {
 
 };
 
-export default withStyles(styles)(ProfilePage);
+export default withStyles(styles)(LoginPage);

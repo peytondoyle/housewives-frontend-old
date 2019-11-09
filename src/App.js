@@ -5,6 +5,8 @@ import Homepage from "./containers/Homepage.js"
 import IndexPage from "./containers/IndexPage.js"
 import ShowPage from "./containers/ShowPage.js"
 import Menu from "./containers/Menu.js"
+import LoginPage from "./components/LoginPage.js"
+import ProfilePage from "./containers/ProfilePage.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -245,6 +247,54 @@ class App extends React.Component {
         <div>
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
+
+          <Route exact path="/login">
+            {
+              this.state.menu_on === false ?
+              <LoginPage
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}/>
+              :
+              <Menu
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}
+              settingCityATL={this.settingCityATL}
+              settingCityBH={this.settingCityBH}
+              settingCityD={this.settingCityD}
+              settingCityDC={this.settingCityDC}
+              settingCityM={this.settingCityM}
+              settingCityNJ={this.settingCityNJ}
+              settingCityNY={this.settingCityNY}
+              settingCityOC={this.settingCityOC}
+              settingCityP={this.settingCityP}
+              routerProps
+              />
+            }
+          </Route>
+
+          <Route exact path="/profile">
+            {
+              this.state.menu_on === false ?
+              <ProfilePage
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}/>
+              :
+              <Menu
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}
+              settingCityATL={this.settingCityATL}
+              settingCityBH={this.settingCityBH}
+              settingCityD={this.settingCityD}
+              settingCityDC={this.settingCityDC}
+              settingCityM={this.settingCityM}
+              settingCityNJ={this.settingCityNJ}
+              settingCityNY={this.settingCityNY}
+              settingCityOC={this.settingCityOC}
+              settingCityP={this.settingCityP}
+              routerProps
+              />
+            }
+          </Route>
 
           <Route path="/home">
             {
