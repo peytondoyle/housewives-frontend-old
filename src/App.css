@@ -311,9 +311,10 @@ h8 em {
   text-align: left;
   margin-left: 0px;
   text-align: center;
-  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background-image: -webkit-linear-gradient(right, #ef9db3, #00afce);
+  /* background: -o-linear-gradient(right, #00afce, #ef9db3);
   background: -moz-linear-gradient(right, #00afce, #ef9db3);
-  background: linear-gradient(to right, #00afce , #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-style: normal;
