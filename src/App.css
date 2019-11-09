@@ -303,7 +303,7 @@ line-height: 9vw;
 
 h8 em {
   font-family: canada-type-gibson, sans-serif;
-  display: inline-flex;
+  display: inline;
   font-weight: 900;
   font-style: normal;
   color: #ffffff;
@@ -312,15 +312,16 @@ h8 em {
   margin-left: 0px;
   text-align: center;
   background-image: -webkit-linear-gradient(right, #ef9db3, #00afce);
-  /* background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
   background: -moz-linear-gradient(right, #00afce, #ef9db3);
-  background: linear-gradient(to right, #00afce , #ef9db3); */
+  background: linear-gradient(to right, #00afce , #ef9db3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-style: normal;
   text-decoration: none;
   line-height: 120%;
 }
+
 
 h8  {
   font-family: canada-type-gibson, sans-serif;
@@ -350,23 +351,31 @@ br {
    margin: 10em 0;
 }
 
-#heart {
+/* #heart {
   color: #ef9db3;
   font-size: 3vw;
   margin-top: 0.7vw;
   margin-bottom: 0.7vw;
   background-color: transparent;
-}
+} */
 
 .heartimg {
   background-color: transparent;
-  width: 10%;
+  width: 2vw;
   cursor: pointer;
+
+  /* object-fit: cover;
+  object-position: 20% 30px;
+  width: 4vw;
+  height: 4vw;
+  border: 0px;
+  border-style: solid;
+  margin-right: 0.5vw; */
 }
 
 #showpagebuttons {
   font-family: canada-type-gibson, sans-serif;
-  display: inline-flex;
+  display: inline;
   font-weight: 900;
   padding: 0.75vw;
   font-style: normal;
@@ -380,7 +389,7 @@ br {
   background: linear-gradient(to right, #00afce , #ef9db3);
   font-style: normal;
   text-decoration: none;
-  line-height: 120%;
+  line-height: 140%;
 }
 
 .wrapper{

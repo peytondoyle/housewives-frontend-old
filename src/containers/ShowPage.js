@@ -53,7 +53,7 @@ class ShowPage extends React.Component {
       this.state={
         liked: false,
         gifs: null,
-        heartImg: "https://i.imgur.com/2NgeD84.png",
+        heartImg: "https://i.imgur.com/j3BRC9r.png",
       }
   }
 
@@ -91,9 +91,9 @@ class ShowPage extends React.Component {
   addLike = (e) => {
     console.log("click!")
     !this.state.liked ?
-    this.setState({liked: true, heartImg: "https://i.imgur.com/yMZArBu.png"})
+    this.setState({liked: true, heartImg: "https://i.imgur.com/ATRePmw.png"})
     :
-    this.setState({liked: false, heartImg: "https://i.imgur.com/2NgeD84.png"})
+    this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
   }
 
   render(){
@@ -134,8 +134,8 @@ class ShowPage extends React.Component {
                 return <div className="item">{item}</div>;
               })}
               <p id="heart"><img class="heartimg" onClick={this.addLike}
-              src={this.state.heartImg}></img><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
-              </h8>
+              src={this.state.heartImg}></img>  <h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
+              </h8><br></br>
               <p id="showpagebuttons">Add to Favorites</p>
 
             </div>
