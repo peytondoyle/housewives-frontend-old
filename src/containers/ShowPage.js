@@ -45,6 +45,7 @@ class ShowPage extends React.Component {
     setTimeout(() => {
       console.log('Our data is fetched');
       this.makeGif();
+      this.setHearts();
     }, 7000)
   }
 
@@ -65,7 +66,15 @@ class ShowPage extends React.Component {
     console.log("firedddd")
     if (prevProps.selectedHW !== this.props.selectedHW) {
       this.makeGif()
+      this.setHearts()
     }}
+
+    setHearts = () => {
+      this.props.selectedHW.ratings.length === 0 ?
+      this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
+      :
+      this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+    }
 
   makeGif = () => {
     let firstHalf = "https://api.giphy.com/v1/gifs/search?api_key=MBLG8iL6WK4fhlNTBExR5HjnVI5P6CIf&q="
@@ -91,7 +100,7 @@ class ShowPage extends React.Component {
   addLike = (e) => {
     console.log("click!")
     !this.state.liked ?
-    this.setState({liked: true, heartImg: "https://i.imgur.com/ATRePmw.png"})
+    this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
     :
     this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
   }
@@ -134,7 +143,7 @@ class ShowPage extends React.Component {
                 return <div className="item">{item}</div>;
               })}
               <p id="heart"><img class="heartimg" onClick={this.addLike}
-              src={this.state.heartImg}></img>  <h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
+              src={this.state.heartImg}></img><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
               </h8><br></br>
               <p id="showpagebuttons">Add to Favorites</p>
 
