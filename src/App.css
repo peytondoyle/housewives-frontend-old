@@ -351,13 +351,10 @@ br {
    margin: 10em 0;
 }
 
-/* #heart {
-  color: #ef9db3;
-  font-size: 3vw;
-  margin-top: 0.7vw;
-  margin-bottom: 0.7vw;
-  background-color: transparent;
-} */
+p#heart {
+  margin-top: 0.3vw;
+  margin-bottom: 0.3vw;
+}
 
 .heartimg {
   background-color: transparent;
@@ -375,21 +372,23 @@ br {
 
 #showpagebuttons {
   font-family: canada-type-gibson, sans-serif;
-  display: inline;
+  display: inline-flex;
   font-weight: 900;
   padding: 0.75vw;
+  /* padding-top: 0vw; */
+  /* margin-bottom: 0.75vw; */
   font-style: normal;
   color: #ffffff;
   font-size: 1.4vw;
   text-align: left;
-  margin: 0px;
+  /* margin: 0px; */
   text-align: center;
   background: -o-linear-gradient(right, #00afce, #ef9db3);
   background: -moz-linear-gradient(right, #00afce, #ef9db3);
   background: linear-gradient(to right, #00afce , #ef9db3);
   font-style: normal;
   text-decoration: none;
-  line-height: 140%;
+  line-height: 100%;
 }
 
 .wrapper{

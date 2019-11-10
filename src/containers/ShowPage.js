@@ -141,11 +141,10 @@ class ShowPage extends React.Component {
               {this.props.selectedHW.firstname} {this.props.selectedHW.lastname} is {this.props.selectedHW.current ? "a current housewife." : "not a current housewife."}<br></br>
               Seasons as an active housewife:            {this.props.selectedHW.seasons.map(function(item) {
                 return <div className="item">{item}</div>;
-              })}
+              })}</h8>
               <p id="heart"><img class="heartimg" onClick={this.addLike}
               src={this.state.heartImg}></img><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
-              </h8><br></br>
-              <p id="showpagebuttons">Add to Favorites</p>
+              <div id="showpagebuttons">Add to Favorites</div>
 
             </div>
             </Paper>
