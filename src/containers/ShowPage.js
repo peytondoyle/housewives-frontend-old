@@ -10,7 +10,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -45,7 +44,7 @@ class ShowPage extends React.Component {
     setTimeout(() => {
       console.log('Our data is fetched');
       this.makeGif();
-      this.setHearts();
+      this.pullingLikes()
     }, 7000)
   }
 
@@ -62,19 +61,32 @@ class ShowPage extends React.Component {
     this.getData();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("firedddd")
-    if (prevProps.selectedHW !== this.props.selectedHW) {
-      this.makeGif()
-      this.setHearts()
-    }}
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("firedddd")
+  //   if (prevProps.selectedHW !== this.props.selectedHW) {
+  //     this.makeGif()
+  //     this.setHearts()
+  //     this.pullingLikes()
+  //   }}
 
-    setHearts = () => {
-      this.props.selectedHW.ratings.length === 0 ?
-      this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
-      :
-      this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
-    }
+  pullingLikes = () => {
+    let HWRATING_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/ratings`
+    fetch(HWRATING_URL)
+    .then(res => res.json())
+    .then(data => {
+      // debugger
+      let userHasRating = data.filter(rating => rating["user_id"] === 3)
+      this.setState({hwRatings: userHasRating})
+      this.setHearts()
+    })}
+
+
+  setHearts = () => {
+    this.state.userHasRating ?
+    this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+    :
+    this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
+  }
 
   makeGif = () => {
     let firstHalf = "https://api.giphy.com/v1/gifs/search?api_key=MBLG8iL6WK4fhlNTBExR5HjnVI5P6CIf&q="
@@ -97,13 +109,68 @@ class ShowPage extends React.Component {
     })
   }
 
-  addLike = (e) => {
+  handleLike = (e) => {
     console.log("click!")
     !this.state.liked ?
-    this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+    this.addLike()
     :
-    this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
+    this.deleteLike()
   }
+
+   addLike = () => {
+    let currentHW = this.props.selectedHW.id
+    this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+    // let currentUser = this.props.currentUserId
+    let body = JSON.stringify({rating: 1, user_id: 3, housewife_id: currentHW})
+    let HOUSEWIVES_URL = "https://realhousewives-backend.herokuapp.com/housewives"
+    fetch(`https://realhousewives-backend.herokuapp.com/ratings`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+        body: body
+      })
+        .then((response) => {return response.json()})
+        .then((rating) => {
+          console.log("add like", rating)
+          this.setState({currentRatingId: rating.id})})
+    }
+
+//
+//     export function deleteCourse(formData) {
+//
+//   const configObj = {
+//     method: "DELETE",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Accept": "application/json"
+//     },
+//   }
+//
+//   return dispatch => {
+//     dispatch({ type: 'DELETING_COURSE' });
+//     fetch(`http://localhost:3001/courses/${formData.courseId}`, configObj)
+//     .then(r => r.json())
+//     .then(deletedCourse => dispatch({ type: 'COURSE_DELETED', payload: deletedCourse }))
+//     .catch(error => alert(`There was an error (${error.message})`));
+//   }
+// }
+
+    deleteLike = () => {
+     let currentHW = this.props.selectedHW.id
+     this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
+     // let currentUser = this.props.currentUserId
+     fetch(`https://realhousewives-backend.herokuapp.com/ratings/${this.state.currentRatingId}`, {
+       method: 'DELETE',
+       headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+       }})
+         .then((response) => {return response.json()})
+         .then((rating) => {
+           console.log("deleted", rating)})
+     }
 
   render(){
 
@@ -142,7 +209,7 @@ class ShowPage extends React.Component {
               Seasons as an active housewife:            {this.props.selectedHW.seasons.map(function(item) {
                 return <div className="item">{item}</div>;
               })}</h8>
-              <p id="heart"><img class="heartimg" onClick={this.addLike}
+              <p id="heart"><img class="heartimg" onClick={this.handleLike}
               src={this.state.heartImg}></img><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
               <div id="showpagebuttons">Add to Favorites</div>
 
