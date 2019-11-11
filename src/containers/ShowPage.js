@@ -118,7 +118,7 @@ class ShowPage extends React.Component {
    addLike = () => {
     let currentHW = this.props.selectedHW.id
     this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
-    let body = JSON.stringify({user_id: 1, housewife_id: currentHW})
+    let body = JSON.stringify({rating: 1, user_id: 1, housewife_id: currentHW})
     fetch(`https://realhousewives-backend.herokuapp.com/ratings`, {
       method: 'POST',
       headers: {
