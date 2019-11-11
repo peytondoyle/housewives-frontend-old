@@ -6,6 +6,7 @@ import IndexPage from "./containers/IndexPage.js"
 import ShowPage from "./containers/ShowPage.js"
 import Menu from "./containers/Menu.js"
 import LoginPage from "./components/LoginPage.js"
+import CreateAccountPage from "./components/CreateAccountPage.js"
 import ProfilePage from "./containers/ProfilePage.js"
 import {
   BrowserRouter as Router,
@@ -252,6 +253,30 @@ class App extends React.Component {
             {
               this.state.menu_on === false ?
               <LoginPage
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}/>
+              :
+              <Menu
+              openMenu={this.openMenu}
+              menu_on={this.state.menu_on}
+              settingCityATL={this.settingCityATL}
+              settingCityBH={this.settingCityBH}
+              settingCityD={this.settingCityD}
+              settingCityDC={this.settingCityDC}
+              settingCityM={this.settingCityM}
+              settingCityNJ={this.settingCityNJ}
+              settingCityNY={this.settingCityNY}
+              settingCityOC={this.settingCityOC}
+              settingCityP={this.settingCityP}
+              routerProps
+              />
+            }
+          </Route>
+
+          <Route exact path="/create">
+            {
+              this.state.menu_on === false ?
+              <CreateAccountPage
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}/>
               :

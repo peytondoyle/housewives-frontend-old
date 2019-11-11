@@ -82,7 +82,7 @@ class LoginPage extends React.Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="logintitle">Login<br></br></h1>
+            <h1 id="logintitle">Create<br></br>Account</h1>
           </div>
           <hr></hr>
           <img src={this.state.loginGif} id="loginimg"></img>
@@ -90,6 +90,10 @@ class LoginPage extends React.Component {
             <input type="text" class="input-res" placeholder="username" id="input"></input>
             <br></br>
             <input type="text" class="input-res" placeholder="password" id="input"></input>
+            <br></br>
+            <input type="text" class="input-res" placeholder="image URL" id="input"></input>
+            <br></br>
+            <input type="text" class="input-res" placeholder="fav city" id="input"></input>
           </div>
           <button type="button" class="btn-sample" id="loginsubmit"
           onClick={this.props.handleUserFormSubmit}>Submit</button>

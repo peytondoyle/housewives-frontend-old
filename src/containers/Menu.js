@@ -55,9 +55,9 @@ export default function FullWidthGrid(props) {
         <Paper className={classes.paper}>
           <a href="/" class="menulinks"><p id="menuitems">Home</p></a>
           <a href="/housewives" class="menulinks"><p id="menuitems">Housewives</p></a>
+          <a href="/create" class="menulinks"><p id="menuitems">New Account</p></a>
           <a href="/login"><p id="menuitems">Login</p></a>
           <p id="menuitems">Logout</p>
-          <p id="menuitems">Search</p>
         </Paper>
       </Grid>
     </Grid>

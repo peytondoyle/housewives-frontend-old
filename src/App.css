@@ -108,7 +108,7 @@ font-family: canada-type-gibson, sans-serif;
 font-weight: 900;
 font-style: normal;
 color: #000000;
-font-size: 5vw;
+font-size: 4.0vw;
 line-height: 1vw;
 text-align: right;
 }
@@ -383,6 +383,7 @@ p#heart {
   text-align: left;
   /* margin: 0px; */
   text-align: center;
+  background-image: -webkit-linear-gradient(right, #ef9db3, #00afce);
   background: -o-linear-gradient(right, #00afce, #ef9db3);
   background: -moz-linear-gradient(right, #00afce, #ef9db3);
   background: linear-gradient(to right, #00afce , #ef9db3);
@@ -446,4 +447,90 @@ p#heart {
   text-align: left;
   margin-top: 1vw;
   margin-bottom: 0px;
+}
+
+.block {
+  margin: 0 auto;
+  /* max-width: 900px; */
+  /* padding: 50px 30px; */
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.input-res {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: 15px/1 'Open Sans', sans-serif;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 50vw;
+  background-image: -webkit-linear-gradient(right, #ef9db3, #00afce);
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  opacity: 85%;
+  border: none;
+  padding: 1vw 1vw 1vw 1vw;
+  border-radius: 1vw;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: center;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#input {
+  margin-bottom: 2vw;
+}
+
+#loginimg {
+  object-fit: cover;
+  object-position: 50% 0;
+  width: 100%;
+  max-width: 49vw;
+  height: 30vw;
+  border: 0px;
+  border-style: solid;
+  margin-bottom: 2vw;
+}
+
+#loginsubmit {
+  height: 3vw;
+  width: 49.5vw;
+  border-radius: 1vw;
+  margin-bottom: 2vw;
+  text-align: center;
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: center;
+  font-style: normal;
+  text-decoration: none;
+  background-color: #ef9db3;
+}
+
+#loginsubmit:hover {
+  cursor: pointer;
+  opacity: 70%;
+  transition: 0.8s;
 }
