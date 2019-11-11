@@ -231,7 +231,18 @@ class App extends React.Component {
       settingCityOC={this.settingCityOC}
       settingCityP={this.settingCityP}
       currentUser={this.state.currentUser}
+      menuAway={this.menuAway}
+      logOut={this.logOut}
       />)
+  }
+
+  menuAway = () => {
+    this.setState({menu_on: false})
+  }
+
+  logOut = () => {
+    window.alert("You have logged out!");
+    this.setState({currentUser: null, menu_on: false})
   }
 
   findHW = (routerProps) => {
@@ -240,6 +251,8 @@ class App extends React.Component {
     return <ShowPage selectedHW={selectedHousewife}
     openMenu={this.openMenu}
     menu_on={this.state.menu_on}
+    currentUser={this.state.currentUser}
+    menuAway={this.menuAway}
     />}
 
   handleUserFormSubmitCreate = (event) => {
@@ -349,6 +362,8 @@ class App extends React.Component {
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
               currentUser={this.state.currentUser}
+              menuAway={this.menuAway}
+              logOut={this.logOut}
               routerProps
               />
             }
@@ -375,6 +390,8 @@ class App extends React.Component {
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
               currentUser={this.state.currentUser}
+              menuAway={this.menuAway}
+              logOut={this.logOut}
               routerProps
               />
             }
@@ -386,7 +403,9 @@ class App extends React.Component {
               <ProfilePage
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              currentUser={this.state.currentUser}/>
+              currentUser={this.state.currentUser}
+              menuAway={this.menuAway}
+              logOut={this.logOut}/>
               :
               <Menu
               openMenu={this.openMenu}
@@ -401,6 +420,8 @@ class App extends React.Component {
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
               currentUser={this.state.currentUser}
+              menuAway={this.menuAway}
+              logOut={this.logOut}
               routerProps
               />
             }
@@ -426,6 +447,8 @@ class App extends React.Component {
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
               currentUser={this.state.currentUser}
+              menuAway={this.menuAway}
+              logOut={this.logOut}
               routerProps
               />
             }
@@ -451,6 +474,8 @@ class App extends React.Component {
             settingCityOC={this.settingCityOC}
             settingCityP={this.settingCityP}
             currentUser={this.state.currentUser}
+            menuAway={this.menuAway}
+            logOut={this.logOut}
             />
           }
 
@@ -474,6 +499,8 @@ class App extends React.Component {
             settingCityOC={this.settingCityOC}
             settingCityP={this.settingCityP}
             currentUser={this.state.currentUser}
+            menuAway={this.menuAway}
+            logOut={this.logOut}
             />
           }
         </Switch>

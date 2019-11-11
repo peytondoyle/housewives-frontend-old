@@ -9,6 +9,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Popover from '@material-ui/core/Popover';
 
 const styles = theme => ({
   root: {
@@ -134,6 +135,17 @@ class ShowPage extends React.Component {
     })
   }
 
+  userLoggedIn = (e) => {
+    return this.props.currentUser ?
+    this.handleLike(e)
+    :
+    this.mustLogIn()}
+
+  mustLogIn = () => {
+    window.alert("You must log in to do that!");
+  }
+
+
   handleLike = (e) => {
     console.log("click!")
     this.state.liked ?
@@ -144,7 +156,8 @@ class ShowPage extends React.Component {
 
    addLike = () => {
     let currentHW = this.props.selectedHW.id
-    let body = JSON.stringify({rating: 1, user_id: 1, housewife_id: currentHW})
+    let currentUser = this.props.currentUser
+    let body = JSON.stringify({rating: 1, user_id: currentUser.id, housewife_id: currentHW})
     fetch(`https://realhousewives-backend.herokuapp.com/ratings`, {
       method: 'POST',
       headers: {
@@ -177,7 +190,7 @@ class ShowPage extends React.Component {
      }
 
   render(){
-    window.scrollTo(0,0); 
+    window.scrollTo(0,0);
 
     const {classes} = this.props;
 
@@ -214,7 +227,7 @@ class ShowPage extends React.Component {
               Seasons as an active housewife:            {this.props.selectedHW.seasons.map(function(item) {
                 return <div className="item">{item}</div>;
               })}</h8>
-              <p id="heart"><img class="heartimg" onClick={this.handleLike}
+              <p id="heart"><img class="heartimg" onClick={this.userLoggedIn}
               src={this.state.heartImg}></img><h8><em>{this.state.totalRatings} Likes</em></h8></p>
               <div id="showpagebuttons">Add to Favorites</div>
 

@@ -52,6 +52,7 @@ export default function FullWidthGrid(props) {
             <Link to="/housewives" onClick={props.settingCityM}><p id="menucities">Miami</p></Link>
           </Paper>
       </Grid>
+
       <Grid item xs={12} sm={6} id="menuright">
         <Paper className={classes.paper}>
 
@@ -59,9 +60,9 @@ export default function FullWidthGrid(props) {
           {props.currentUser ?
           <>
           <a href="/" class="menulinks"><p id="menuitems">Home</p></a>
-          <a href="/housewives" class="menulinks"><p id="menuitems">Housewives</p></a>
+          <Link to="/housewives" class="menulinks"><p id="menuitems" onClick={props.menuAway}>Housewives</p></Link>
           <a href="/profile"><p id="menuitems">Profile</p></a>
-          <p id="menuitems">Logout</p>
+          <Link to="/housewives" onClick={props.logOut}><p id="menuitems">Logout</p></Link>
           </>
           :
           <>
