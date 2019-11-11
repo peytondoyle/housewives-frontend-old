@@ -9,7 +9,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   root: {
@@ -58,14 +58,38 @@ class LoginPage extends React.Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="title">Login<br></br>Housewives</h1>
+            <h1 id="logintitle">Login<br></br></h1>
           </div>
           <hr></hr>
-          <div id="maintitle">
-          <div id="subtitle">
-            <p class="psubtitle">Most everything you’d want to know about the American <em>Real Housewives</em> franchises.</p>
-          </div>
-          </div>
+          <TextField
+          required
+          id="standard-required"
+          label="Required"
+          defaultValue="Hello World"
+          className={classes.textField}
+          margin="normal"
+        />
+
+        <form className={classes.root} noValidate autoComplete="off">
+      <TextField id="standard-secondary" label="Standard secondary" color="secondary" />
+      <TextField
+        id="filled-secondary"
+        label="Filled secondary"
+        variant="filled"
+        color="secondary"
+      />
+      <TextField
+        id="outlined-secondary"
+        label="Outlined secondary"
+        variant="outlined"
+        color="secondary"
+      />
+    </form>
+          Username: <input ref='name' size="80" placeholder='please enter your username' /><br></br>
+          Password: <input ref='name' size="80" placeholder='please enter your username' />
+            <br></br>
+            <button type="button" class="btn-sample"
+            onClick={this.props.handleUserFormSubmit}>Submit</button>
           </Paper>
         </Grid>
       </Grid>

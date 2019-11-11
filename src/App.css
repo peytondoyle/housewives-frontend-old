@@ -439,3 +439,11 @@ p#heart {
   margin-right: 0.5vw;
   margin-bottom: 0.5vw;
 }
+
+/* Login page styling */
+#logintitle {
+  display: inline-grid;
+  text-align: left;
+  margin-top: 1vw;
+  margin-bottom: 0px;
+}

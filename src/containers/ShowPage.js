@@ -74,7 +74,6 @@ class ShowPage extends React.Component {
     fetch(HWRATING_URL)
     .then(res => res.json())
     .then(data => {
-      // debugger
       let userHasRating = data.filter(rating => rating["user_id"] === 3)
       this.setState({hwRatings: userHasRating})
       this.setHearts()
@@ -98,7 +97,6 @@ class ShowPage extends React.Component {
     let secondHalf = "&limit=24&offset=0&rating=PG&lang=en"
     let secondChunk = lastName.concat(secondHalf)
     let GIPHY_URL =  firstChunk.concat(secondChunk)
-    // debugger
 
     fetch(GIPHY_URL)
     .then(res => res.json())
@@ -120,9 +118,7 @@ class ShowPage extends React.Component {
    addLike = () => {
     let currentHW = this.props.selectedHW.id
     this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
-    // let currentUser = this.props.currentUserId
-    let body = JSON.stringify({rating: 1, user_id: 3, housewife_id: currentHW})
-    let HOUSEWIVES_URL = "https://realhousewives-backend.herokuapp.com/housewives"
+    let body = JSON.stringify({user_id: 1, housewife_id: currentHW})
     fetch(`https://realhousewives-backend.herokuapp.com/ratings`, {
       method: 'POST',
       headers: {
