@@ -58,7 +58,7 @@ class ProfilePage extends React.Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="title">Profile<br></br>Housewives</h1>
+            <h1 id="title">{this.props.currentUser.username}<br></br>Housewives</h1>
           </div>
           <hr></hr>
           <div id="maintitle">

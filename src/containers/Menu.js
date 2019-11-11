@@ -31,6 +31,7 @@ export default function FullWidthGrid(props) {
 
 
   return (
+
     <div className={classes.root}>
     <div class="menubutton">
       <img src="https://i.ibb.co/CKPwv00/Menu-Icons2.png" class="menubuttonimage"
@@ -53,11 +54,24 @@ export default function FullWidthGrid(props) {
       </Grid>
       <Grid item xs={12} sm={6} id="menuright">
         <Paper className={classes.paper}>
+
+        <>
+          {props.currentUser ?
+          <>
+          <a href="/" class="menulinks"><p id="menuitems">Home</p></a>
+          <a href="/housewives" class="menulinks"><p id="menuitems">Housewives</p></a>
+          <a href="/profile"><p id="menuitems">Profile</p></a>
+          <p id="menuitems">Logout</p>
+          </>
+          :
+          <>
           <a href="/" class="menulinks"><p id="menuitems">Home</p></a>
           <a href="/housewives" class="menulinks"><p id="menuitems">Housewives</p></a>
           <a href="/create" class="menulinks"><p id="menuitems">New Account</p></a>
           <a href="/login"><p id="menuitems">Login</p></a>
-          <p id="menuitems">Logout</p>
+          </>
+          }
+          </>
         </Paper>
       </Grid>
     </Grid>

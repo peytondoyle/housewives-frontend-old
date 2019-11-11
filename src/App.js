@@ -230,6 +230,7 @@ class App extends React.Component {
       settingCityNY={this.settingCityNY}
       settingCityOC={this.settingCityOC}
       settingCityP={this.settingCityP}
+      currentUser={this.state.currentUser}
       />)
   }
 
@@ -304,10 +305,10 @@ class App extends React.Component {
         <div>
 
         {this.state.currentUser ?
-        <Redirect to ="/housewives" />
+        <Redirect to ="/profile" />
         :
         null}
-        
+
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
 
@@ -331,6 +332,7 @@ class App extends React.Component {
               settingCityNY={this.settingCityNY}
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
+              currentUser={this.state.currentUser}
               routerProps
               />
             }
@@ -356,6 +358,7 @@ class App extends React.Component {
               settingCityNY={this.settingCityNY}
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
+              currentUser={this.state.currentUser}
               routerProps
               />
             }
@@ -366,7 +369,8 @@ class App extends React.Component {
               this.state.menu_on === false ?
               <ProfilePage
               openMenu={this.openMenu}
-              menu_on={this.state.menu_on}/>
+              menu_on={this.state.menu_on}
+              currentUser={this.state.currentUser}/>
               :
               <Menu
               openMenu={this.openMenu}
@@ -380,6 +384,7 @@ class App extends React.Component {
               settingCityNY={this.settingCityNY}
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
+              currentUser={this.state.currentUser}
               routerProps
               />
             }
@@ -404,6 +409,7 @@ class App extends React.Component {
               settingCityNY={this.settingCityNY}
               settingCityOC={this.settingCityOC}
               settingCityP={this.settingCityP}
+              currentUser={this.state.currentUser}
               routerProps
               />
             }
@@ -428,6 +434,7 @@ class App extends React.Component {
             settingCityNY={this.settingCityNY}
             settingCityOC={this.settingCityOC}
             settingCityP={this.settingCityP}
+            currentUser={this.state.currentUser}
             />
           }
 
@@ -450,6 +457,7 @@ class App extends React.Component {
             settingCityNY={this.settingCityNY}
             settingCityOC={this.settingCityOC}
             settingCityP={this.settingCityP}
+            currentUser={this.state.currentUser}
             />
           }
         </Switch>
