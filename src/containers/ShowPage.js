@@ -177,6 +177,7 @@ class ShowPage extends React.Component {
      }
 
   render(){
+    window.scrollTo(0,0); 
 
     const {classes} = this.props;
 

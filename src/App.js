@@ -13,10 +13,13 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
 } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
+
 
 let HOUSEWIVES_URL = "https://realhousewives-backend.herokuapp.com/housewives"
+// const browserHistory = createBrowserHistory();
 
 class App extends React.Component {
 
@@ -31,6 +34,7 @@ class App extends React.Component {
         ratingButton: "▲ Rating",
         nameButton: "▲ Name",
         hwRatings: [],
+        currentUser: null
       }
   }
 
@@ -237,6 +241,57 @@ class App extends React.Component {
     menu_on={this.state.menu_on}
     />}
 
+  handleUserFormSubmit = (event) => {
+    let name = event.target.parentElement.childNodes[3].children[0].value
+    let image = event.target.parentElement.childNodes[3].children[2].value
+    let favcity = event.target.parentElement.childNodes[3].children[4].value
+    let body = JSON.stringify({username: name, image: image, favcity: favcity})
+    fetch('https://realhousewives-backend.herokuapp.com/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'},
+      body: body,})
+    .then((response) => {return response.json()})
+    .then((user) => {
+      console.log(user)
+      this.setState({currentUser: user})
+      // this.handleClick();
+      })
+    }
+
+
+
+  // handleClick = () => {
+  //   // let history = useHistory();
+  //   // this.props.history.push("/housewives");
+  //   window.location.assign("https://realhousewives-frontend.herokuapp.com/housewives");
+  //
+  //
+  // }
+
+
+    //
+    // submitForm (e) {
+    //   e.preventDefault()
+    //   this.props.history.push('/profile');
+    // }
+
+    // accountRedirect = () => {
+    //   this.state.currentUserId !== 0 ?
+    //
+    // }
+
+    // addNewUser = (user) => {
+    //   fetch(`http://localhost:3000/users/${user["id"]}/ratings`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({
+    //     allRatings: data,
+    //     allUsers: this.state.allUsers.concat(user),
+    //     currentUserId: user["id"]})
+    //     // console.log(data)
+    //   })
+    // }
 
 
   render(){
@@ -245,7 +300,14 @@ class App extends React.Component {
 
   	return (
       <Router>
+
         <div>
+
+        {this.state.currentUser ?
+        <Redirect to ="/housewives" />
+        :
+        null}
+        
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
 
@@ -254,7 +316,8 @@ class App extends React.Component {
               this.state.menu_on === false ?
               <LoginPage
               openMenu={this.openMenu}
-              menu_on={this.state.menu_on}/>
+              menu_on={this.state.menu_on}
+              handleUserFormSubmit={this.handleUserFormSubmit}/>
               :
               <Menu
               openMenu={this.openMenu}
@@ -278,7 +341,8 @@ class App extends React.Component {
               this.state.menu_on === false ?
               <CreateAccountPage
               openMenu={this.openMenu}
-              menu_on={this.state.menu_on}/>
+              menu_on={this.state.menu_on}
+              handleUserFormSubmit={this.handleUserFormSubmit}/>
               :
               <Menu
               openMenu={this.openMenu}

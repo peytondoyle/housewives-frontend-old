@@ -10,6 +10,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
+import SubmitButton from "./SubmitButton.js"
 
 const styles = theme => ({
   root: {
@@ -26,10 +27,7 @@ const styles = theme => ({
 });
 
 
-
-
 class LoginPage extends React.Component {
-
 
   constructor(){
     super()
@@ -88,8 +86,6 @@ class LoginPage extends React.Component {
           <img src={this.state.loginGif} id="loginimg"></img>
           <div class="block">
             <input type="text" class="input-res" placeholder="username" id="input"></input>
-            <br></br>
-            <input type="text" class="input-res" placeholder="password" id="input"></input>
           </div>
           <button type="button" class="btn-sample" id="loginsubmit"
           onClick={this.props.handleUserFormSubmit}>Submit</button>

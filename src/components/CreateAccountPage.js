@@ -89,8 +89,6 @@ class LoginPage extends React.Component {
           <div class="block">
             <input type="text" class="input-res" placeholder="username" id="input"></input>
             <br></br>
-            <input type="text" class="input-res" placeholder="password" id="input"></input>
-            <br></br>
             <input type="text" class="input-res" placeholder="image URL" id="input"></input>
             <br></br>
             <input type="text" class="input-res" placeholder="fav city" id="input"></input>
