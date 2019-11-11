@@ -51,9 +51,9 @@ class ShowPage extends React.Component {
   constructor(){
     super()
       this.state={
-        liked: false,
+        // liked: false,
         gifs: null,
-        heartImg: "https://i.imgur.com/j3BRC9r.png",
+        // heartImg: "https://i.imgur.com/j3BRC9r.png",
       }
   }
 
@@ -74,14 +74,41 @@ class ShowPage extends React.Component {
     fetch(HWRATING_URL)
     .then(res => res.json())
     .then(data => {
-      let userHasRating = data.filter(rating => rating["user_id"] === 3)
-      this.setState({hwRatings: userHasRating})
+      let totalRatings = data.length
+      let userHasRating = data.filter(rating => rating["user_id"] === 1)
+      // debugger
+      this.setState({hwRatings: userHasRating, totalRatings: totalRatings})
+      // debugger
+      if (userHasRating.length === 0) {
+        this.setState({liked: false, currentRatingId: 0})
+      } else {
+        this.setState({liked: true, currentRatingId: userHasRating[0].id})
+      }
       this.setHearts()
     })}
 
 
+    postClick = () => {
+      let HWRATING_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/ratings`
+      fetch(HWRATING_URL)
+      .then(res => res.json())
+      .then(data => {
+        let hwRatings = data.length
+        // debugger
+        // this.setState(this.state)
+        this.setState({totalRatings: hwRatings})
+        // if (userHasRating.length === 0) {
+        //   this.setState({liked: false, currentRatingId: 0})
+        // } else {
+        //   this.setState({liked: true, currentRatingId: userHasRating[0].id})
+        // }
+      })}
+
+    // liked: true, currentRatingId: userHasRating[0].id
+
+
   setHearts = () => {
-    this.state.userHasRating ?
+    this.state.liked ?
     this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
     :
     this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
@@ -109,15 +136,14 @@ class ShowPage extends React.Component {
 
   handleLike = (e) => {
     console.log("click!")
-    !this.state.liked ?
-    this.addLike()
-    :
+    this.state.liked ?
     this.deleteLike()
+    :
+    this.addLike()
   }
 
    addLike = () => {
     let currentHW = this.props.selectedHW.id
-    this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
     let body = JSON.stringify({rating: 1, user_id: 1, housewife_id: currentHW})
     fetch(`https://realhousewives-backend.herokuapp.com/ratings`, {
       method: 'POST',
@@ -130,12 +156,12 @@ class ShowPage extends React.Component {
         .then((response) => {return response.json()})
         .then((rating) => {
           console.log("add like", rating)
-          this.setState({currentRatingId: rating.id})})
+          this.setState({currentRatingId: rating.id, liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+          this.postClick()})
     }
 
     deleteLike = () => {
      let currentHW = this.props.selectedHW.id
-     this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
      // let currentUser = this.props.currentUserId
      fetch(`https://realhousewives-backend.herokuapp.com/ratings/${this.state.currentRatingId}`, {
        method: 'DELETE',
@@ -145,7 +171,9 @@ class ShowPage extends React.Component {
        }})
          .then((response) => {return response.json()})
          .then((rating) => {
-           console.log("deleted", rating)})
+          console.log("deleted", rating)
+          this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png", currentRatingId: 0})
+          this.postClick()})
      }
 
   render(){
@@ -186,7 +214,7 @@ class ShowPage extends React.Component {
                 return <div className="item">{item}</div>;
               })}</h8>
               <p id="heart"><img class="heartimg" onClick={this.handleLike}
-              src={this.state.heartImg}></img><h8><em>{this.props.selectedHW.ratings.length} Likes</em></h8></p>
+              src={this.state.heartImg}></img><h8><em>{this.state.totalRatings} Likes</em></h8></p>
               <div id="showpagebuttons">Add to Favorites</div>
 
             </div>
