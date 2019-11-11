@@ -94,7 +94,7 @@ class LoginPage extends React.Component {
             <input type="text" class="input-res" placeholder="fav city" id="input"></input>
           </div>
           <button type="button" class="btn-sample" id="loginsubmit"
-          onClick={this.props.handleUserFormSubmit}>Submit</button>
+          onClick={this.props.handleUserFormSubmitCreate}>Submit</button>
             <br></br>
           </Paper>
         </Grid>

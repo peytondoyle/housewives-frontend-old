@@ -242,7 +242,7 @@ class App extends React.Component {
     menu_on={this.state.menu_on}
     />}
 
-  handleUserFormSubmit = (event) => {
+  handleUserFormSubmitCreate = (event) => {
     let name = event.target.parentElement.childNodes[3].children[0].value
     let image = event.target.parentElement.childNodes[3].children[2].value
     let favcity = event.target.parentElement.childNodes[3].children[4].value
@@ -259,6 +259,22 @@ class App extends React.Component {
       // this.handleClick();
       })
     }
+
+    handleUserFormSubmitLogin = (event) => {
+      let name = event.target.parentElement.childNodes[3].children[0].value
+      let body = JSON.stringify({username: name})
+      fetch('https://realhousewives-backend.herokuapp.com/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'},
+        body: body,})
+      .then((response) => {return response.json()})
+      .then((user) => {
+        console.log(user)
+        this.setState({currentUser: user})
+        // this.handleClick();
+        })
+      }
 
 
 
@@ -318,7 +334,7 @@ class App extends React.Component {
               <LoginPage
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              handleUserFormSubmit={this.handleUserFormSubmit}/>
+              handleUserFormSubmitLogin={this.handleUserFormSubmitLogin}/>
               :
               <Menu
               openMenu={this.openMenu}
@@ -344,7 +360,7 @@ class App extends React.Component {
               <CreateAccountPage
               openMenu={this.openMenu}
               menu_on={this.state.menu_on}
-              handleUserFormSubmit={this.handleUserFormSubmit}/>
+              handleUserFormSubmitCreate={this.handleUserFormSubmitCreate}/>
               :
               <Menu
               openMenu={this.openMenu}
