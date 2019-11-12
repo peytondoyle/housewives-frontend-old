@@ -82,14 +82,14 @@ class App extends React.Component {
   filterCity = (e) => {
     if (this.state.reverse) {
       let allHousewives = this.state.allHousewives
-      let sorted = allHousewives.sort(this.dynamicSort("-city"));
-      console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: false, cityButton: "▼ City"})
-    } else {
-      let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(this.dynamicSort("city"));
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: true, cityButton: "▲ City"})
+      this.setState({allHousewives: sorted, reverse: false, cityButton: "▲ City"})
+    } else {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(this.dynamicSort("-city"));
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: true, cityButton: "▼ City"})
     }
   }
 
@@ -97,17 +97,35 @@ class App extends React.Component {
     if (this.state.reverse) {
       let allHousewives = this.state.allHousewives
       let sorted = allHousewives.sort(function(a, b) {
-        return b.totalseasons - a.totalseasons;
-      });
-      console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: false, tenureButton: "▼ Tenure"});
-    } else {
-      let allHousewives = this.state.allHousewives
-      let sorted = allHousewives.sort(function(a, b) {
         return a.totalseasons - b.totalseasons;
       });
       console.log(sorted)
-      this.setState({allHousewives: sorted, reverse: true, tenureButton: "▲ Tenure"})
+      this.setState({allHousewives: sorted, reverse: false, tenureButton: "▲ Tenure"})
+    } else {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(function(a, b) {
+        return b.totalseasons - a.totalseasons;
+      });
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: true, tenureButton: "▼ Tenure"});
+    }
+  }
+
+  filterRating = (e) => {
+    if (this.state.reverse) {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(function(a, b) {
+        return b.ratings.length - a.ratings.length;
+      });
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: false, ratingButton: "▼ Rating"});
+    } else {
+      let allHousewives = this.state.allHousewives
+      let sorted = allHousewives.sort(function(a, b) {
+        return a.ratings.length - b.ratings.length;
+      });
+      console.log(sorted)
+      this.setState({allHousewives: sorted, reverse: true, ratingButton: "▲ Rating"})
     }
   }
 
@@ -212,6 +230,7 @@ class App extends React.Component {
       filterName={this.filterName}
       filterCity={this.filterCity}
       filterTenure={this.filterTenure}
+      filterRating={this.filterRating}
       routerProps={routerProps}
       cityButton={this.state.cityButton}
       nameButton={this.state.nameButton}
