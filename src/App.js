@@ -290,16 +290,14 @@ class App extends React.Component {
     let favcity = event.target.parentElement.childNodes[3].children[4].value
     let body = JSON.stringify({username: name, image: image, favcity: favcity})
 
-    // this.verifyNameCreate(name)
+    // Verifying username doesn't exist already
     let allUsers = this.state.allUsers
     let resultObject = allUsers.find(un => un.username === name)
-    {!resultObject ?
-    this.restOfHandle(body)
-    :
-    window.alert("This username is in use. Please choose another.");
-    }
-
-
+      {!resultObject ?
+      this.restOfHandle(body)
+      :
+      window.alert("This username is in use. Please choose another.");
+      }
     }
 
     restOfHandle = (body) => {
@@ -342,24 +340,23 @@ class App extends React.Component {
       verifyNameLogin = (name) => {
         let allUsers = this.state.allUsers
         let resultObject = allUsers.find(un => un.username === name)
-        {resultObject ?
-        this.setState({currentUser: resultObject})
-        :
-        window.alert("This user does not exist. Please create an account.");
+        if (resultObject) {
+          this.setState({currentUser: resultObject})
+        }
+        else {
+          if (window.confirm('This user does not exist. Please click OK to create an account.'))
+          {
+          window.location.href='/create';
+          };
         }
       }
 
-      // verifyNameCreate = (name) => {
-      //
-      // }
 
 
 
 
 
   render(){
-
-
 
   	return (
       <Router>
