@@ -87,7 +87,7 @@ class LoginPage extends React.Component {
           <hr></hr>
           <img src={this.state.loginGif} id="loginimg"></img>
           <div class="block">
-            <input type="text" class="input-res" placeholder="username" maxlength="8" id="input"></input>
+            <input type="text" class="input-res" placeholder="username" maxlength="8" id="input" required></input>
             <br></br>
             <input type="text" class="input-res" placeholder="image URL" id="input"></input>
             <br></br>

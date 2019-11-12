@@ -43,7 +43,7 @@ class ShowPage extends React.Component {
       this.makeGif();
       this.pullingLikes();
       this.pullingFavs();
-    }, 1500)
+    }, 50)
   }
 
   constructor(){
@@ -73,6 +73,37 @@ class ShowPage extends React.Component {
       this.noUserLikes(data)
   })}
 
+  pullingFavs = () => {
+    let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
+    fetch(HWFAVS_URL)
+    .then(res => res.json())
+    .then(data => {
+      this.state.currentUser ?
+      this.pullingUserFavs(data)
+      :
+      this.noUserFavs(data)
+  })}
+
+  noUserFavs = (data) => {
+    let totalFavs = data.length
+    this.setState({hwFavs: [], totalFavs: totalFavs, favorited: false, currentFavId: 0})
+    this.setFav();
+  }
+
+  pullingUserFavs = (data) => {
+    let totalFavs = data.length
+    let userHasFavs = data.some(fav => fav.user_id === this.props.currentUser.id)
+    if (userHasFavs) {
+      let usersFavs = data.filter(fav => fav["user_id"])
+      this.setState({hwFavs: userHasFavs, totalFavs: totalFavs, favorited: true, currentFavId: usersFavs[0].id})
+      this.setFav();
+    }
+    else {
+      this.setState({hwFavs: [], totalFavs: totalFavs, favorited: false, currentFavId: 0})
+      this.setFav();
+    }
+  }
+
   noUserLikes = (data) => {
     let totalRatings = data.length
     this.setState({hwRatings: [], totalRatings: totalRatings, liked: false, currentRatingId: 0})
@@ -93,34 +124,34 @@ class ShowPage extends React.Component {
     }
   }
 
-  pullingFavs = () => {
-    let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
-    fetch(HWFAVS_URL)
-    .then(res => res.json())
-    .then(data => {
-      let totalFavs = data.length
-      // debugger
-      if (this.props.currentUser && totalFavs.length === 0) {
-        console.log("first")
-        this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
-      }
-      else if (this.props.currentUser && totalFavs.length > 0) {
-        let userHasFavs = data.filter(fav => fav["user_id"] === this.props.currentUser.id)
-        console.log("second")
-        this.setState({hwFavs: userHasFavs, totalFavs: totalFavs, favorited: true, currentFavId: userHasFavs[0].id})
-      } else {
-        console.log("third")
-        this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
-      }
-      this.setFav()
-      }
-    )}
+  // pullingFavs = () => {
+  //   let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
+  //   fetch(HWFAVS_URL)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     let totalFavs = data.length
+  //     // debugger
+  //     if (this.props.currentUser && totalFavs.length === 0) {
+  //       console.log("first")
+  //       this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
+  //     }
+  //     else if (this.props.currentUser && totalFavs.length > 0) {
+  //       let userHasFavs = data.filter(fav => fav["user_id"] === this.props.currentUser.id)
+  //       console.log("second")
+  //       this.setState({hwFavs: userHasFavs, totalFavs: totalFavs, favorited: true, currentFavId: userHasFavs[0].id})
+  //     } else {
+  //       console.log("third")
+  //       this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
+  //     }
+  //     this.setFav()
+  //     }
+  //   )}
 
     setFav = () => {
       this.state.favorited ?
-      this.setState({favorited: true, favoriteText: "Remove from Favorites", loading: false})
+      this.setState({favoriteText: "Remove from Favorites", loading: false})
       :
-      this.setState({favorited: false, favoriteText: "Add to Favorites", loading: false})
+      this.setState({favoriteText: "Add to Favorites", loading: false})
     }
 
 

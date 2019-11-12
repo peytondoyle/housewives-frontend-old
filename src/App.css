@@ -547,3 +547,36 @@ p#heart {
   opacity: 70%;
   transition: 0.8s;
 }
+
+/* Profile page styling */
+#bio {
+  font-family: canada-type-gibson, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-style: normal;
+  color: #000000;
+  font-size: 1vw;
+  line-height: 110%;
+  text-align: right;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#headshot {
+  object-fit: cover;
+  object-position: 50% 0;
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+  max-width: 10vw;
+  height: 10vw;
+  border: 0px;
+  border-style: solid;
+  padding-bottom: 0.5vw;
+  border-radius: 100px;
+}
+
+#profilepic {
+  clear:right;
+  /* float: right; */
+}

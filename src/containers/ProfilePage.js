@@ -9,6 +9,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import HousewifeCard from "../components/IndexPage/HousewifeCard.js"
 
 
 const styles = theme => ({
@@ -28,17 +29,48 @@ const styles = theme => ({
 
 
 
+
+
 class ProfilePage extends React.Component {
+
 
 
   constructor(){
     super()
       this.state={
-
+        favsByUser: []
       }
   }
 
+  dateSince = () => {
+    var a = new Date(this.props.currentUser.created_at);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var time = month + ' ' + date + ',' + ' ' + year;
+    return time;
+  }
+
+  pullingFavs = () => {
+    let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/users/${this.props.currentUser.id}/favorites`
+    fetch(HWFAVS_URL)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({favsByUser: data})
+  })}
+
+  // settingFavs = (data) => {
+  //   if(data.length > 0) {
+  //   return "You have some favorites!"
+  //   }
+  //   else{
+  //
+  //   }
+  // }
+
   componentDidMount(){
+    this.pullingFavs();
   }
 
   render(){
@@ -58,17 +90,46 @@ class ProfilePage extends React.Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <div id="maintitle">
-            <h1 id="title">{this.props.currentUser.username}<br></br>Housewives</h1>
+            <h1 id="title">My Profile</h1>
           </div>
           <hr></hr>
-          <div id="maintitle">
-          <div id="subtitle">
-            <p class="psubtitle">Most everything you’d want to know about the American <em>Real Housewives</em> franchises.</p>
-          </div>
-          </div>
           </Paper>
         </Grid>
       </Grid>
+
+      <Grid container spacing={3}>
+        
+      <Grid item xs>
+
+      </Grid>
+
+      <Grid item xs>
+      </Grid>
+
+      <Grid item xs={3}>
+        <Paper className={classes.paper} style={{textAlign: "left"}}>
+
+        </Paper>
+      </Grid>
+
+      <Grid item xs={3}>
+        <Paper className={classes.paper} style={{textAlign: "right"}}>
+              <div id="profilepic">
+                <img src={this.props.currentUser.image} id="headshot"></img>
+              </div>
+              <div>
+              <h8>{this.props.currentUser.username}</h8>
+              <p id="bio">Member since: {this.dateSince()}
+              <br></br>
+              Favorite city: {this.props.currentUser.favcity}</p>
+              </div>
+
+        </Paper>
+      </Grid>
+
+      <Grid item xs>
+      </Grid>
+    </Grid>
       </div>
 
 
