@@ -46,28 +46,21 @@ class ShowPage extends React.Component {
       console.log('Our data is fetched');
       this.makeGif();
       this.pullingLikes();
-      // this.pullingFavs();
+      this.pullingFavs();
     }, 4500)
   }
 
   constructor(){
     super()
       this.state={
-        gifs: null
+        gifs: null,
+        favoriteText: "Add to Favorites"
       }
   }
 
   componentDidMount(){
     this.getData();
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log("firedddd")
-  //   if (prevProps.selectedHW !== this.props.selectedHW) {
-  //     this.makeGif()
-  //     this.setHearts()
-  //     this.pullingLikes()
-  //   }}
 
   pullingLikes = () => {
     let HWRATING_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/ratings`
@@ -88,23 +81,35 @@ class ShowPage extends React.Component {
       }
     )}
 
-    // pullingFavs = () => {
-    //   let HWRATING_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
-    //   fetch(HWRATING_URL)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     let totalFavs = data.length
-    //     let userHasFav = data.filter(rating => rating["user_id"] === 1)
-    //     // debugger
-    //     this.setState({hwFavorite: userHasFavorite, totalRatings: totalRatings})
-    //     // debugger
-    //     if (userHasRating.length === 0) {
-    //       this.setState({liked: false, currentRatingId: 0})
-    //     } else {
-    //       this.setState({liked: true, currentRatingId: userHasRating[0].id})
-    //     }
-    //     this.setHearts()
-    //   })}
+    pullingFavs = () => {
+      let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
+      fetch(HWFAVS_URL)
+      .then(res => res.json())
+      .then(data => {
+        let totalFavs = data.length
+        let userHasFavs = data.filter(fav => fav["user_id"] === this.props.currentUser.id)
+        // debugger
+        if (this.props.currentUser && totalFavs.length === 0) {
+          console.log("first")
+          this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
+        }
+        else if (this.props.currentUser && userHasFavs.length > 0) {
+          console.log("second")
+          this.setState({hwFavs: userHasFavs, totalFavs: totalFavs, favorited: true, currentFavId: userHasFavs[0].id})
+        } else {
+          console.log("third")
+          this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
+        }
+        this.setFav()
+        }
+      )}
+
+      setFav = () => {
+        this.state.favorited ?
+        this.setState({favorited: true, favoriteText: "Remove from Favorites"})
+        :
+        this.setState({favorited: false, favoriteText: "Add to Favorites"})
+      }
 
 
     postClick = () => {
@@ -113,17 +118,9 @@ class ShowPage extends React.Component {
       .then(res => res.json())
       .then(data => {
         let hwRatings = data.length
-        // debugger
-        // this.setState(this.state)
         this.setState({totalRatings: hwRatings})
-        // if (userHasRating.length === 0) {
-        //   this.setState({liked: false, currentRatingId: 0})
-        // } else {
-        //   this.setState({liked: true, currentRatingId: userHasRating[0].id})
-        // }
       })}
 
-    // liked: true, currentRatingId: userHasRating[0].id
 
 
   setHearts = () => {
@@ -237,7 +234,7 @@ class ShowPage extends React.Component {
           .then((response) => {return response.json()})
           .then((fav) => {
             console.log("add fav", fav)
-            this.setState({currentFavId: fav.id, favorited: true})
+            this.setState({currentFavId: fav.id, favorited: true, favoriteText: "Remove from Favorites"})
             // this.setState({currentRatingId: rating.id, liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
             // this.postClick()})
       })}
@@ -254,7 +251,8 @@ class ShowPage extends React.Component {
            .then((response) => {return response.json()})
            .then((fav) => {
             console.log("deleted", fav)
-            this.setState({currentFavId: 0, favorited: false})
+            this.setState({favorited: false, favoriteText: "Add to Favorites"})
+            // this.setState({currentFavId: 0, favorited: false, favoriteText: "Add to Favorites"})
             // this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png", currentRatingId: 0})
             // this.postClick()})
        })}
@@ -325,7 +323,7 @@ class ShowPage extends React.Component {
               })}</h8>
               <p id="heart"><img class="heartimg" onClick={this.userLoggedIn}
               src={this.state.heartImg}></img><h8><em>{this.state.totalRatings} Likes</em></h8></p>
-              <div id="showpagebuttons" onClick={this.userLoggedInFav}>Add to Favorites</div>
+              <div id="showpagebuttons" onClick={this.userLoggedInFav}>{this.state.favoriteText}</div>
 
             </div>
             </Paper>
