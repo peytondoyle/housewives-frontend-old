@@ -34,11 +34,6 @@ const StyledRating = withStyles({
   },
 })(Rating);
 
-function getLabelText(value) {
-  return `${value} Heart${value !== 1 ? 's' : ''}`;
-}
-
-
 class ShowPage extends React.Component {
 
   getData(){
@@ -47,14 +42,16 @@ class ShowPage extends React.Component {
       this.makeGif();
       this.pullingLikes();
       this.pullingFavs();
-    }, 4500)
+    }, 5000)
   }
 
   constructor(){
     super()
       this.state={
         gifs: null,
-        favoriteText: "Add to Favorites"
+        favoriteText: "Add to Favorites",
+        userHasFavs: [],
+        userHasRating: []
       }
   }
 
@@ -67,49 +64,62 @@ class ShowPage extends React.Component {
     fetch(HWRATING_URL)
     .then(res => res.json())
     .then(data => {
-      let totalRatings = data.length
-      let userHasRating = data.filter(rating => rating["user_id"] === this.props.currentUser.id)
-      if (this.props.currentUser && totalRatings.length === 0) {
-        this.setState({liked: false, currentRatingId: 0, totalRatings: totalRatings})
+      console.log(data)
+      this.state.currentUser ?
+      this.pullingUserLikes(data)
+      :
+      this.noUserLikes(data)
+  })}
+
+  noUserLikes = (data) => {
+    let totalRatings = data.length
+    this.setState({hwRatings: [], totalRatings: totalRatings, liked: false, currentRatingId: 0})
+    this.setHearts();
+  }
+
+  pullingUserLikes = (data) => {
+    let totalRatings = data.length
+    let userHasRating = data.some(rating => rating.user_id === this.props.currentUser.id)
+    if (userHasRating) {
+      let usersRatings = data.filter(rating => rating["user_id"])
+      this.setState({hwRatings: userHasRating, totalRatings: totalRatings, liked: true, currentRatingId: usersRatings[0].id})
+      this.setHearts();
+    }
+    else {
+      this.setState({hwRatings: [], totalRatings: totalRatings, liked: false, currentRatingId: 0})
+      this.setHearts();
+    }
+  }
+
+  pullingFavs = () => {
+    let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
+    fetch(HWFAVS_URL)
+    .then(res => res.json())
+    .then(data => {
+      let totalFavs = data.length
+      // debugger
+      if (this.props.currentUser && totalFavs.length === 0) {
+        console.log("first")
+        this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
       }
-      else if (this.props.currentUser && userHasRating > 0) {
-        this.setState({hwRatings: userHasRating, totalRatings: totalRatings, liked: true, currentRatingId: userHasRating[0].id})
+      else if (this.props.currentUser && totalFavs.length > 0) {
+        let userHasFavs = data.filter(fav => fav["user_id"] === this.props.currentUser.id)
+        console.log("second")
+        this.setState({hwFavs: userHasFavs, totalFavs: totalFavs, favorited: true, currentFavId: userHasFavs[0].id})
       } else {
-        this.setState({liked: false, currentRatingId: 0, totalRatings: totalRatings})
+        console.log("third")
+        this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
       }
-      this.setHearts()
+      this.setFav()
       }
     )}
 
-    pullingFavs = () => {
-      let HWFAVS_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
-      fetch(HWFAVS_URL)
-      .then(res => res.json())
-      .then(data => {
-        let totalFavs = data.length
-        let userHasFavs = data.filter(fav => fav["user_id"] === this.props.currentUser.id)
-        // debugger
-        if (this.props.currentUser && totalFavs.length === 0) {
-          console.log("first")
-          this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
-        }
-        else if (this.props.currentUser && userHasFavs.length > 0) {
-          console.log("second")
-          this.setState({hwFavs: userHasFavs, totalFavs: totalFavs, favorited: true, currentFavId: userHasFavs[0].id})
-        } else {
-          console.log("third")
-          this.setState({favorited: false, currentFavId: 0, totalFavs: totalFavs})
-        }
-        this.setFav()
-        }
-      )}
-
-      setFav = () => {
-        this.state.favorited ?
-        this.setState({favorited: true, favoriteText: "Remove from Favorites"})
-        :
-        this.setState({favorited: false, favoriteText: "Add to Favorites"})
-      }
+    setFav = () => {
+      this.state.favorited ?
+      this.setState({favorited: true, favoriteText: "Remove from Favorites"})
+      :
+      this.setState({favorited: false, favoriteText: "Add to Favorites"})
+    }
 
 
     postClick = () => {
@@ -125,9 +135,9 @@ class ShowPage extends React.Component {
 
   setHearts = () => {
     this.state.liked ?
-    this.setState({liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+    this.setState({heartImg: "https://i.imgur.com/AoMrC43.png"})
     :
-    this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png"})
+    this.setState({heartImg: "https://i.imgur.com/j3BRC9r.png"})
   }
 
   makeGif = () => {
