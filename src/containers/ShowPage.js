@@ -45,16 +45,15 @@ class ShowPage extends React.Component {
     setTimeout(() => {
       console.log('Our data is fetched');
       this.makeGif();
-      this.pullingLikes()
-    }, 7000)
+      this.pullingLikes();
+      // this.pullingFavs();
+    }, 4500)
   }
 
   constructor(){
     super()
       this.state={
-        // liked: false,
-        gifs: null,
-        // heartImg: "https://i.imgur.com/j3BRC9r.png",
+        gifs: null
       }
   }
 
@@ -76,17 +75,36 @@ class ShowPage extends React.Component {
     .then(res => res.json())
     .then(data => {
       let totalRatings = data.length
-      let userHasRating = data.filter(rating => rating["user_id"] === 1)
-      // debugger
-      this.setState({hwRatings: userHasRating, totalRatings: totalRatings})
-      // debugger
-      if (userHasRating.length === 0) {
-        this.setState({liked: false, currentRatingId: 0})
+      let userHasRating = data.filter(rating => rating["user_id"] === this.props.currentUser.id)
+      if (this.props.currentUser && totalRatings.length === 0) {
+        this.setState({liked: false, currentRatingId: 0, totalRatings: totalRatings})
+      }
+      else if (this.props.currentUser && userHasRating > 0) {
+        this.setState({hwRatings: userHasRating, totalRatings: totalRatings, liked: true, currentRatingId: userHasRating[0].id})
       } else {
-        this.setState({liked: true, currentRatingId: userHasRating[0].id})
+        this.setState({liked: false, currentRatingId: 0, totalRatings: totalRatings})
       }
       this.setHearts()
-    })}
+      }
+    )}
+
+    // pullingFavs = () => {
+    //   let HWRATING_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/favorites`
+    //   fetch(HWRATING_URL)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     let totalFavs = data.length
+    //     let userHasFav = data.filter(rating => rating["user_id"] === 1)
+    //     // debugger
+    //     this.setState({hwFavorite: userHasFavorite, totalRatings: totalRatings})
+    //     // debugger
+    //     if (userHasRating.length === 0) {
+    //       this.setState({liked: false, currentRatingId: 0})
+    //     } else {
+    //       this.setState({liked: true, currentRatingId: userHasRating[0].id})
+    //     }
+    //     this.setHearts()
+    //   })}
 
 
     postClick = () => {
@@ -189,26 +207,82 @@ class ShowPage extends React.Component {
           this.postClick()})
      }
 
-     whichIcon = () => {
-      if (this.props.selectedHW.city === "New York") {
-         return "https://i.imgur.com/Fe6oDit.png"}
-      else if (this.props.selectedHW.city === "Washington, D.C.") {
-        return "https://i.imgur.com/t47rPp4.png"}
-      else if (this.props.selectedHW.city === "Potomac") {
-       return "https://i.imgur.com/NyxfHUl.png"}
-      else if (this.props.selectedHW.city === "Dallas") {
-        return "https://i.imgur.com/k93uudK.png"}
-      else if (this.props.selectedHW.city === "Beverly Hills") {
-        return "https://i.imgur.com/Sg3vdJF.png"}
-      else if (this.props.selectedHW.city === "Miami") {
-        return "https://i.imgur.com/AAn5O8B.png"}
-      else if (this.props.selectedHW.city === "New Jersey") {
-        return "https://i.imgur.com/mSOugIu.png"}
-      else if (this.props.selectedHW.city === "Orange County") {
-        return "https://i.imgur.com/3Xnqu2H.png"}
-      else if (this.props.selectedHW.city === "Atlanta") {
-        return "https://i.imgur.com/zs4c8AZ.png"}
+     userLoggedInFav = (e) => {
+       return this.props.currentUser ?
+       this.handleFav(e)
+       :
+       this.mustLogIn()
      }
+
+     handleFav = (e) => {
+       console.log("click!")
+       this.state.favorited ?
+       this.deleteFav()
+       :
+       this.addFav()
+     }
+
+     addFav = () => {
+      let currentHW = this.props.selectedHW.id
+      let currentUser = this.props.currentUser
+      let body = JSON.stringify({housewife_id: currentHW, user_id: currentUser.id})
+      fetch(`https://realhousewives-backend.herokuapp.com/favorites`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+          body: body
+        })
+          .then((response) => {return response.json()})
+          .then((fav) => {
+            console.log("add fav", fav)
+            this.setState({currentFavId: fav.id, favorited: true})
+            // this.setState({currentRatingId: rating.id, liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+            // this.postClick()})
+      })}
+
+
+      deleteFav = () => {
+       // let currentHW = this.props.selectedHW.id
+       fetch(`https://realhousewives-backend.herokuapp.com/favorites/${this.state.currentFavId}`, {
+         method: 'DELETE',
+         headers: {
+           'Content-Type': 'application/json',
+           'Accept': 'application/json'
+         }})
+           .then((response) => {return response.json()})
+           .then((fav) => {
+            console.log("deleted", fav)
+            this.setState({currentFavId: 0, favorited: false})
+            // this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png", currentRatingId: 0})
+            // this.postClick()})
+       })}
+
+       mustLogIn = () => {
+         window.alert("You must log in to do that!");
+       }
+
+       whichIcon = () => {
+        if (this.props.selectedHW.city === "New York") {
+           return "https://i.imgur.com/Fe6oDit.png"}
+        else if (this.props.selectedHW.city === "Washington, D.C.") {
+          return "https://i.imgur.com/t47rPp4.png"}
+        else if (this.props.selectedHW.city === "Potomac") {
+         return "https://i.imgur.com/NyxfHUl.png"}
+        else if (this.props.selectedHW.city === "Dallas") {
+          return "https://i.imgur.com/k93uudK.png"}
+        else if (this.props.selectedHW.city === "Beverly Hills") {
+          return "https://i.imgur.com/Sg3vdJF.png"}
+        else if (this.props.selectedHW.city === "Miami") {
+          return "https://i.imgur.com/AAn5O8B.png"}
+        else if (this.props.selectedHW.city === "New Jersey") {
+          return "https://i.imgur.com/mSOugIu.png"}
+        else if (this.props.selectedHW.city === "Orange County") {
+          return "https://i.imgur.com/3Xnqu2H.png"}
+        else if (this.props.selectedHW.city === "Atlanta") {
+          return "https://i.imgur.com/zs4c8AZ.png"}
+       }
 
   render(){
     window.scrollTo(0,0);
@@ -251,7 +325,7 @@ class ShowPage extends React.Component {
               })}</h8>
               <p id="heart"><img class="heartimg" onClick={this.userLoggedIn}
               src={this.state.heartImg}></img><h8><em>{this.state.totalRatings} Likes</em></h8></p>
-              <div id="showpagebuttons">Add to Favorites</div>
+              <div id="showpagebuttons" onClick={this.userLoggedInFav}>Add to Favorites</div>
 
             </div>
             </Paper>

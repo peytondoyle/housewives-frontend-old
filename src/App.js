@@ -364,7 +364,7 @@ class App extends React.Component {
         <div>
 
         {this.state.currentUser ?
-        <Redirect to ="/profile" />
+        <Redirect to ="/housewives" />
         :
         null}
 

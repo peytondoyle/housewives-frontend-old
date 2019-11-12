@@ -389,6 +389,8 @@ p#heart {
   font-style: normal;
   text-decoration: none;
   line-height: 100%;
+  border-radius: 1vw;
+  cursor: pointer;
 }
 
 .wrapper{
