@@ -9,7 +9,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import HousewifeCard from "../components/IndexPage/HousewifeCard.js"
+import FavoriteCard from "../components/ProfilePage/FavoriteCard.js"
 
 
 const styles = theme => ({
@@ -98,7 +98,11 @@ class ProfilePage extends React.Component {
       </Grid>
 
       <Grid container spacing={3}>
-        
+        <h8>Favorites</h8>
+          {this.state.favsByUser.map(housewife => <FavoriteCard
+          housewife={housewife}
+          openMenu={this.props.openMenu}
+          menu_on={this.props.menu_on}/>)}
       <Grid item xs>
 
       </Grid>
