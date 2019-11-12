@@ -34,7 +34,8 @@ class App extends React.Component {
         ratingButton: "▲ Rating",
         nameButton: "▲ Name",
         hwRatings: [],
-        currentUser: null
+        currentUser: null,
+        allUsers: []
       }
   }
 
@@ -42,10 +43,17 @@ class App extends React.Component {
   fetch(HOUSEWIVES_URL)
   .then(res => res.json())
   .then(data => {
-    console.log(data)
+    // console.log(data)
     let sorted = data.sort(this.dynamicSort("firstname"))
     this.setState({allHousewives: sorted, allHousewivesProtected: sorted})
     })
+
+    fetch('https://realhousewives-backend.herokuapp.com/users')
+    .then((response) => {return response.json()})
+    .then((users) => {
+      // console.log(users)
+      this.setState({allUsers: users})
+      })
   }
 
   dynamicSort = (property) => {
@@ -275,26 +283,26 @@ class App extends React.Component {
     />}
 
   handleUserFormSubmitCreate = (event) => {
-    let name = event.target.parentElement.childNodes[3].children[0].value
+    let initialName = event.target.parentElement.childNodes[3].children[0].value
+    let lowercaseName = initialName.toString().toLowerCase();
+    let name = lowercaseName.replace(/\s/g, '');
     let image = event.target.parentElement.childNodes[3].children[2].value
     let favcity = event.target.parentElement.childNodes[3].children[4].value
     let body = JSON.stringify({username: name, image: image, favcity: favcity})
-    fetch('https://realhousewives-backend.herokuapp.com/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'},
-      body: body,})
-    .then((response) => {return response.json()})
-    .then((user) => {
-      console.log(user)
-      this.setState({currentUser: user})
-      // this.handleClick();
-      })
+
+    // this.verifyNameCreate(name)
+    let allUsers = this.state.allUsers
+    let resultObject = allUsers.find(un => un.username === name)
+    {!resultObject ?
+    this.restOfHandle(body)
+    :
+    window.alert("This username is in use. Please choose another.");
     }
 
-    handleUserFormSubmitLogin = (event) => {
-      let name = event.target.parentElement.childNodes[3].children[0].value
-      let body = JSON.stringify({username: name})
+
+    }
+
+    restOfHandle = (body) => {
       fetch('https://realhousewives-backend.herokuapp.com/users', {
         method: 'POST',
         headers: {
@@ -306,41 +314,47 @@ class App extends React.Component {
         this.setState({currentUser: user})
         // this.handleClick();
         })
+    }
+
+    // handleUserFormSubmitLogin = (event) => {
+    //   let name = event.target.parentElement.childNodes[3].children[0].value
+    //   let body = JSON.stringify({username: name})
+    //   fetch('https://realhousewives-backend.herokuapp.com/users', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'},
+    //     body: body,})
+    //   .then((response) => {return response.json()})
+    //   .then((user) => {
+    //     console.log(user)
+    //     this.setState({currentUser: user})
+    //     // this.handleClick();
+    //     })
+    //   }
+
+    handleUserFormSubmitLogin = (event) => {
+        let initialName = event.target.parentElement.childNodes[3].children[0].value
+        let lowercaseName = initialName.toString().toLowerCase();
+        let name = lowercaseName.replace(/\s/g, '');
+        this.verifyNameLogin(name)
       }
 
+      verifyNameLogin = (name) => {
+        let allUsers = this.state.allUsers
+        let resultObject = allUsers.find(un => un.username === name)
+        {resultObject ?
+        this.setState({currentUser: resultObject})
+        :
+        window.alert("This user does not exist. Please create an account.");
+        }
+      }
+
+      // verifyNameCreate = (name) => {
+      //
+      // }
 
 
-  // handleClick = () => {
-  //   // let history = useHistory();
-  //   // this.props.history.push("/housewives");
-  //   window.location.assign("https://realhousewives-frontend.herokuapp.com/housewives");
-  //
-  //
-  // }
 
-
-    //
-    // submitForm (e) {
-    //   e.preventDefault()
-    //   this.props.history.push('/profile');
-    // }
-
-    // accountRedirect = () => {
-    //   this.state.currentUserId !== 0 ?
-    //
-    // }
-
-    // addNewUser = (user) => {
-    //   fetch(`http://localhost:3000/users/${user["id"]}/ratings`)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({
-    //     allRatings: data,
-    //     allUsers: this.state.allUsers.concat(user),
-    //     currentUserId: user["id"]})
-    //     // console.log(data)
-    //   })
-    // }
 
 
   render(){

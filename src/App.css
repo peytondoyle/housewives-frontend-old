@@ -166,7 +166,7 @@ p.filterbuttontext {
   /* margin-right: 0vw !important; */
 }
 
-#filters:hover {
+#filters:hover, .menubuttonimage {
   cursor: pointer;
 }
 
