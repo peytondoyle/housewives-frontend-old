@@ -10,6 +10,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Popover from '@material-ui/core/Popover';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const styles = theme => ({
   root: {
@@ -42,7 +43,7 @@ class ShowPage extends React.Component {
       this.makeGif();
       this.pullingLikes();
       this.pullingFavs();
-    }, 5000)
+    }, 1500)
   }
 
   constructor(){
@@ -51,7 +52,8 @@ class ShowPage extends React.Component {
         gifs: null,
         favoriteText: "Add to Favorites",
         userHasFavs: [],
-        userHasRating: []
+        userHasRating: [],
+        loading: true
       }
   }
 
@@ -116,9 +118,9 @@ class ShowPage extends React.Component {
 
     setFav = () => {
       this.state.favorited ?
-      this.setState({favorited: true, favoriteText: "Remove from Favorites"})
+      this.setState({favorited: true, favoriteText: "Remove from Favorites", loading: false})
       :
-      this.setState({favorited: false, favoriteText: "Add to Favorites"})
+      this.setState({favorited: false, favoriteText: "Add to Favorites", loading: false})
     }
 
 
@@ -298,8 +300,10 @@ class ShowPage extends React.Component {
     const {classes} = this.props;
 
   	return (
-      this.props.selectedHW ?
+      this.state.loading ?
 
+      <LinearProgress color="secondary" />
+      :
       <div className={classes.root}>
 
       <div class="menubutton">
@@ -412,8 +416,7 @@ class ShowPage extends React.Component {
       </Grid>
 
       </div>
-      :
-      "yolo"
+
 
   	);
   }

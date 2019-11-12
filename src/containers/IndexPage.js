@@ -41,6 +41,7 @@ export default function FullWidthGrid(props) {
   const classes = useStyles();
 
   return (
+    props.allHousewives ?
     <div className={classes.root}>
     <div class="menubutton">
       <img src="https://i.ibb.co/6szFNdq/Menu-Icons.png" class="menubuttonimage"
@@ -89,5 +90,7 @@ export default function FullWidthGrid(props) {
 
       </Grid>
     </div>
+    :
+    "yolo"
   );
 }

@@ -16,6 +16,7 @@ import {
   Redirect
 } from "react-router-dom";
 import { useHistory, withRouter } from "react-router-dom";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 let HOUSEWIVES_URL = "https://realhousewives-backend.herokuapp.com/housewives"
@@ -35,7 +36,8 @@ class App extends React.Component {
         nameButton: "▲ Name",
         hwRatings: [],
         currentUser: null,
-        allUsers: []
+        allUsers: [],
+        loading: true
       }
   }
 
@@ -45,7 +47,7 @@ class App extends React.Component {
   .then(data => {
     // console.log(data)
     let sorted = data.sort(this.dynamicSort("firstname"))
-    this.setState({allHousewives: sorted, allHousewivesProtected: sorted})
+    this.setState({allHousewives: sorted, allHousewivesProtected: sorted, loading: false})
     })
 
     fetch('https://realhousewives-backend.herokuapp.com/users')
@@ -369,6 +371,7 @@ class App extends React.Component {
         null}
 
         <Switch>
+
           <Route exact path="/" render={() => <Redirect to="/home" />} />
 
           <Route exact path="/login">
@@ -457,6 +460,9 @@ class App extends React.Component {
             }
           </Route>
 
+          {this.state.loading ?
+            <LinearProgress color="secondary" />
+            :
           <Route path="/home">
             {
               this.state.menu_on === false ?
@@ -483,6 +489,7 @@ class App extends React.Component {
               />
             }
           </Route>
+        }
 
           {
             this.state.menu_on === false ?
