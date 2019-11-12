@@ -360,7 +360,6 @@ p#heart {
   background-color: transparent;
   width: 2vw;
   cursor: pointer;
-
   /* object-fit: cover;
   object-position: 20% 30px;
   width: 4vw;
@@ -439,6 +438,18 @@ p#heart {
   border-style: solid;
   margin-right: 0.5vw;
   margin-bottom: 0.5vw;
+}
+
+#hwicon {
+  object-fit: cover;
+  object-position: 50% 0;
+  display: block;
+  width: 15%;
+  /* max-width: 49vw; */
+  max-height: 10vw;
+  border: 0px;
+  border-style: solid;
+  margin-bottom: -2vw;
 }
 
 /* Login page styling */

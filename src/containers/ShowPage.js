@@ -189,6 +189,27 @@ class ShowPage extends React.Component {
           this.postClick()})
      }
 
+     whichIcon = () => {
+      if (this.props.selectedHW.city === "New York") {
+         return "https://i.imgur.com/Fe6oDit.png"}
+      else if (this.props.selectedHW.city === "Washington, D.C.") {
+        return "https://i.imgur.com/t47rPp4.png"}
+      else if (this.props.selectedHW.city === "Potomac") {
+       return "https://i.imgur.com/NyxfHUl.png"}
+      else if (this.props.selectedHW.city === "Dallas") {
+        return "https://i.imgur.com/k93uudK.png"}
+      else if (this.props.selectedHW.city === "Beverly Hills") {
+        return "https://i.imgur.com/Sg3vdJF.png"}
+      else if (this.props.selectedHW.city === "Miami") {
+        return "https://i.imgur.com/AAn5O8B.png"}
+      else if (this.props.selectedHW.city === "New Jersey") {
+        return "https://i.imgur.com/mSOugIu.png"}
+      else if (this.props.selectedHW.city === "Orange County") {
+        return "https://i.imgur.com/3Xnqu2H.png"}
+      else if (this.props.selectedHW.city === "Atlanta") {
+        return "https://i.imgur.com/zs4c8AZ.png"}
+     }
+
   render(){
     window.scrollTo(0,0);
 
@@ -216,8 +237,9 @@ class ShowPage extends React.Component {
           </Grid>
 
           <Grid item xs={4}>
-            <Paper className={classes.paper} style={{textAlign: "left", paddingTop: "20vw"}}>
+            <Paper className={classes.paper} style={{textAlign: "left", paddingTop: "17vw"}}>
             <div id="housewifetitle">
+              <img src={this.whichIcon()} id="hwicon"></img>
               <h2 id="title">{this.props.selectedHW.firstname}</h2>
             </div>
 
