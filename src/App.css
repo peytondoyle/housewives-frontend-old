@@ -580,3 +580,59 @@ p#heart {
   clear:right;
   /* float: right; */
 }
+
+.profilecard {
+  text-align: center;
+  /* width: 10vw; */
+}
+
+
+.housewifeprofileimg {
+  /* width: 80%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% 0; */
+  /* background-color: transparent;
+  background-repeat: repeat; */
+
+  /* max-width: 40vw;
+  max-height: 10vw;
+  object-position: 100% 0;
+  object-fit: scale-down; */
+  object-fit: cover;
+  object-position: 50% 0;
+  width: 12vw;
+  height: 24vw;
+  border: 0px;
+  border-style: solid;
+  margin-right: 0.5vw;
+}
+
+h9 {
+  font-family: canada-type-gibson, sans-serif;
+  display: flex;
+  font-weight: 900;
+  font-style: normal;
+  color: #000000;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: left;
+  font-style: normal;
+  text-decoration: none;
+}
+
+h6 {
+  font-family: canada-type-gibson, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 0.9vw;
+  line-height: 1.0vw;
+  text-align: left;
+  margin: 0px;
+  text-align: center;
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  text-decoration: none;
+}
