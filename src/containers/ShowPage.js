@@ -62,6 +62,7 @@ class ShowPage extends React.Component {
     this.makeGif();
     this.pullingLikes();
     this.pullingFavs();
+    this.pullingComments();
   }
 
   pullingLikes = () => {
@@ -86,6 +87,46 @@ class ShowPage extends React.Component {
       :
       this.noUserFavs(data)
   })}
+
+  pullingComments = () => {
+    let HWCOMMENT_URL = `https://realhousewives-backend.herokuapp.com/housewives/${this.props.selectedHW.id}/comments`
+    fetch(HWCOMMENT_URL)
+    .then(res => res.json())
+    .then(data => {
+      this.state.currentUser ?
+      this.pullingUserComments(data)
+      :
+      this.noUserComments(data)
+  })}
+
+  pullingUserComments = (data) => {
+    let totalComments = data
+    let userHasComments = data.some(comment => comment.user_id === this.props.currentUser.id)
+    if (userHasComments) {
+      let usersComments = data.filter(comment => comment["user_id"])
+      this.setState({userComments: usersComments, totalComments: totalComments, commented: true, currentCommentId: usersComments[0].id})
+      // this.setComments();
+    }
+    else {
+      this.setState({userComments: [], totalComments: totalComments, commented: false, currentCommentId: 0})
+      // this.setComments();
+    }
+  }
+
+  noUserComments = (data) => {
+    let totalComments = data
+    let totalCommentsLength = totalComments.length
+    this.setState({userComments: [], totalComments: totalComments, commented: this.trueorFalse(totalCommentsLength), currentCommentId: 0})
+    this.setComments();
+  }
+
+  trueorFalse = (totalCommentsLength) => {
+    if (totalCommentsLength === 0){
+      return false
+    } else {
+      return true
+    }
+  }
 
   noUserFavs = (data) => {
     let totalFavs = data.length
@@ -174,6 +215,13 @@ class ShowPage extends React.Component {
     this.setState({heartImg: "https://i.imgur.com/AoMrC43.png"})
     :
     this.setState({heartImg: "https://i.imgur.com/j3BRC9r.png"})
+  }
+
+  setComments = () => {
+    this.state.commented ?
+    console.log()
+    :
+    this.setState({commentText: "There are no comments for this housewife yet!"})
   }
 
   makeGif = () => {
@@ -306,6 +354,35 @@ class ShowPage extends React.Component {
        mustLogIn = () => {
          window.alert("You must log in to do that!");
        }
+
+       userLoggedInComments = (e) => {
+         return this.props.currentUser ?
+         this.handleComment(e)
+         :
+         this.mustLogIn()}
+
+       handleComment = (e) => {
+         let comment = e.target.parentNode.children[12].children[0].value
+         console.log(comment)
+         let currentHW = this.props.selectedHW.id
+         let currentUser = this.props.currentUser
+         let body = JSON.stringify({comment: comment, housewife_id: currentHW, user_id: currentUser.id})
+         fetch(`https://realhousewives-backend.herokuapp.com/comments`, {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+           },
+             body: body
+           })
+         .then((response) => {return response.json()})
+         .then((rating) => {
+           console.log("add comment", comment)
+           // this.setState({currentRatingId: rating.id, liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
+           // this.postClick()})
+         }
+         )
+         }
 
        whichIcon = () => {
         if (this.props.selectedHW.city === "New York") {
@@ -442,11 +519,12 @@ class ShowPage extends React.Component {
             }></img>
 
             <div id="housewifeinfotitle"><span>Comments</span></div>
+            <p>{this.state.commentText}</p>
             <div class="block">
               <input type="text" class="comment" placeholder="leave a comment" id="input"></input>
             </div>
             <button type="button" class="btn-sample" id="commentsubmit"
-            onClick={this.props.handleUserFormSubmitLogin}>Submit</button>
+            onClick={this.userLoggedInComments}>Submit</button>
             </div>
             </div>
           </Paper>

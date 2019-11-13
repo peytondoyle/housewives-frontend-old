@@ -285,6 +285,7 @@ class App extends React.Component {
     menu_on={this.state.menu_on}
     currentUser={this.state.currentUser}
     menuAway={this.menuAway}
+    userLoggedInComments={this.userLoggedInComments}
     />}
 
   handleUserFormSubmitCreate = (event) => {
@@ -318,6 +319,26 @@ class App extends React.Component {
         // this.handleClick();
         })
     }
+
+    
+
+
+
+     // deleteLike = () => {
+     //  let currentHW = this.props.selectedHW.id
+     //  // let currentUser = this.props.currentUserId
+     //  fetch(`https://realhousewives-backend.herokuapp.com/ratings/${this.state.currentRatingId}`, {
+     //    method: 'DELETE',
+     //    headers: {
+     //      'Content-Type': 'application/json',
+     //      'Accept': 'application/json'
+     //    }})
+     //      .then((response) => {return response.json()})
+     //      .then((rating) => {
+     //       console.log("deleted", rating)
+     //       this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png", currentRatingId: 0})
+     //       this.postClick()})
+     //  }
 
     // handleUserFormSubmitLogin = (event) => {
     //   let name = event.target.parentElement.childNodes[3].children[0].value

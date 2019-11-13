@@ -526,11 +526,16 @@ p#heart {
   text-align: center;
   font-style: normal;
   text-decoration: none;
+
+}
+
+#input.comment {
+  margin-bottom: 0.5vw;
 }
 
 #commentsubmit {
   height: 3vw;
-  width: 46vw;
+  width: 15vw;
   border-radius: 1vw;
   margin-bottom: 2vw;
   text-align: center;
@@ -545,7 +550,12 @@ p#heart {
   font-style: normal;
   text-decoration: none;
   background-color: #ef9db3;
+  border: 0px;
 }
+
+/* button.commentsubmit {
+  padding-left: 10vw;
+} */
 
 /* Login page styling */
 #logintitle {
@@ -618,7 +628,7 @@ p#heart {
 
 #loginsubmit {
   height: 3vw;
-  width: 49.5vw;
+  width: 50vw;
   border-radius: 1vw;
   margin-bottom: 2vw;
   text-align: center;
@@ -633,6 +643,11 @@ p#heart {
   font-style: normal;
   text-decoration: none;
   background-color: #ef9db3;
+  border: 0px;
+}
+
+input#input {
+  margin-bottom: 0.5vw;
 }
 
 #loginsubmit:hover {
