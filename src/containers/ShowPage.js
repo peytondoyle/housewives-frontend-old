@@ -411,7 +411,18 @@ class ShowPage extends React.Component {
      let find = totalComments.filter(obj => {
         return obj.id.toString() === commentId
       })
-     console.log(find)
+     this.setState({comment2Delete: find, commentIdforDelete: commentId})
+     fetch(`https://realhousewives-backend.herokuapp.com/comments/${this.state.commentIdforDelete}`, {
+       method: 'DELETE',
+       headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+       }})
+         .then((response) => {return response.json()})
+         .then((comment) => {
+          console.log("deleted", comment)
+          // this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png", currentRatingId: 0})
+        this.pullingComments()})
    }
 
   render(){
