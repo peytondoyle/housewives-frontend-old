@@ -402,7 +402,16 @@ class ShowPage extends React.Component {
 
    startComments = () => {
      return this.state.totalComments.map(comment =>
-     {return <><div id="commentdiv"><div class="imgDes"><img src={comment.user.image} id="commentthumbnail"></img></div><div><h10>{comment.comment}</h10><p id="comments">{comment.user.username}</p></div></div></>})
+     {return <><div id="commentdiv"><div class="imgDes"><img src={comment.user.image} class="commentthumbnail" onClick={this.deleteComment} id={comment.id}></img></div><div><h10>{comment.comment}</h10><p id="comments">{comment.user.username}</p></div></div></>})
+   }
+
+   deleteComment = (e) => {
+     let commentId = e.target.id
+     let totalComments = this.state.totalComments
+     let find = totalComments.filter(obj => {
+        return obj.id.toString() === commentId
+      })
+     console.log(find)
    }
 
   render(){
@@ -521,11 +530,6 @@ class ShowPage extends React.Component {
             <div id="housewifeinfotitle"><span>Comments</span></div>
             <p id="taglines">{this.state.commentText}</p>
 
-            {this.state.totalComments ?
-              this.startComments()
-              :
-              null
-            }
 
 
 
@@ -536,6 +540,11 @@ class ShowPage extends React.Component {
             <button type="button" class="btn-sample" id="commentsubmit"
             onClick={this.userLoggedInComments}>Submit</button>
             </div>
+            {this.state.totalComments ?
+              this.startComments()
+              :
+              null
+            }
             </div>
           </Paper>
         </Grid>

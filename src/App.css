@@ -533,6 +533,10 @@ p#heart {
   margin-bottom: 0.5vw;
 }
 
+input#commentInput.comment {
+  margin-bottom: 1vw;
+}
+
 #commentsubmit {
   height: 3vw;
   width: 15vw;
@@ -553,7 +557,7 @@ p#heart {
   border: 0px;
 }
 
-#commentthumbnail {
+.commentthumbnail {
   object-fit: cover;
   object-position: 50% 0;
   display: inline-flex;
