@@ -13,6 +13,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,8 +40,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function FullWidthGrid(props) {
   const classes = useStyles();
+  // window.scrollTo(0,0);
 
   return (
+
     props.allHousewives ?
     <div className={classes.root}>
     <div class="menubutton">
@@ -91,6 +94,6 @@ export default function FullWidthGrid(props) {
       </Grid>
     </div>
     :
-    "yolo"
+    <LinearProgress color="secondary" />
   );
 }

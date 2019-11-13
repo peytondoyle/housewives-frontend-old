@@ -37,14 +37,14 @@ const StyledRating = withStyles({
 
 class ShowPage extends React.Component {
 
-  getData(){
-    setTimeout(() => {
-      console.log('Our data is fetched');
-      this.makeGif();
-      this.pullingLikes();
-      this.pullingFavs();
-    }, 50)
-  }
+  // getData(){
+  //   setTimeout(() => {
+  //     console.log('Our data is fetched');
+  //     this.makeGif();
+  //     this.pullingLikes();
+  //     this.pullingFavs();
+  //   }, 50)
+  // }
 
   constructor(){
     super()
@@ -58,7 +58,10 @@ class ShowPage extends React.Component {
   }
 
   componentDidMount(){
-    this.getData();
+    // this.getData();
+    this.makeGif();
+    this.pullingLikes();
+    this.pullingFavs();
   }
 
   pullingLikes = () => {
@@ -78,7 +81,7 @@ class ShowPage extends React.Component {
     fetch(HWFAVS_URL)
     .then(res => res.json())
     .then(data => {
-      this.state.currentUser ?
+      this.props.currentUser ?
       this.pullingUserFavs(data)
       :
       this.noUserFavs(data)
