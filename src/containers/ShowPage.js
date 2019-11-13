@@ -26,15 +26,6 @@ const styles = theme => ({
   },
 });
 
-const StyledRating = withStyles({
-  iconFilled: {
-    color: '#ff6d75',
-  },
-  iconHover: {
-    color: '#ff3d47',
-  },
-})(Rating);
-
 class ShowPage extends React.Component {
 
   // getData(){
@@ -53,7 +44,8 @@ class ShowPage extends React.Component {
         favoriteText: "Add to Favorites",
         userHasFavs: [],
         userHasRating: [],
-        loading: true
+        loading: true,
+        commentText: null
       }
   }
 
@@ -101,15 +93,16 @@ class ShowPage extends React.Component {
 
   pullingUserComments = (data) => {
     let totalComments = data
+    let totalCommentsLength = totalComments.length
     let userHasComments = data.some(comment => comment.user_id === this.props.currentUser.id)
     if (userHasComments) {
       let usersComments = data.filter(comment => comment["user_id"])
-      this.setState({userComments: usersComments, totalComments: totalComments, commented: true, currentCommentId: usersComments[0].id})
-      // this.setComments();
+      this.setState({userComments: usersComments, totalComments: totalComments, commented: this.trueorFalse(totalCommentsLength), currentCommentId: usersComments[0].id})
+      this.setComments();
     }
     else {
-      this.setState({userComments: [], totalComments: totalComments, commented: false, currentCommentId: 0})
-      // this.setComments();
+      this.setState({userComments: [], totalComments: totalComments, commented: this.trueorFalse(totalCommentsLength), currentCommentId: 0})
+      this.setComments();
     }
   }
 
@@ -405,6 +398,11 @@ class ShowPage extends React.Component {
           return "https://i.imgur.com/zs4c8AZ.png"}
        }
 
+   startComments = () => {
+     return this.state.totalComments.map(comment =>
+     {return <><div class="imgDes"><img src={comment.user.image} id="commentthumbnail"></img></div><h10>{comment.comment}</h10><br></br><p id="comments">{comment.user.username}</p></>})
+   }
+
   render(){
     window.scrollTo(0,0);
 
@@ -519,7 +517,17 @@ class ShowPage extends React.Component {
             }></img>
 
             <div id="housewifeinfotitle"><span>Comments</span></div>
-            <p>{this.state.commentText}</p>
+            <p id="taglines">{this.state.commentText}</p>
+
+            {this.state.totalComments ?
+              this.startComments()
+              :
+              null
+            }
+
+
+
+
             <div class="block">
               <input type="text" class="comment" placeholder="leave a comment" id="input"></input>
             </div>
