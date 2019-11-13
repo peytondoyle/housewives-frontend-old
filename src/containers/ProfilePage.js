@@ -133,8 +133,9 @@ class ProfilePage extends React.Component {
       </div>
 
       <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
-        <Box display="flex" p={1} style={{margin: '-1.3vw'}}>
+
         <Grid container spacing={3}>
+
 
           {this.state.favsByUser.length === 0 ?
           <div id="nofavs"><span>You don't have any favorites yet. Add some!</span></div>
@@ -144,8 +145,9 @@ class ProfilePage extends React.Component {
             openMenu={this.props.openMenu}
             menu_on={this.props.menu_on}/>)}
 
+
         </Grid>
-        </Box>
+
       </div>
 
 

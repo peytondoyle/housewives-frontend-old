@@ -179,7 +179,8 @@ p.filterbuttontext {
   display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
   justify-content: center;
   align-items: center;
-  padding-top: 0px;
+  padding-top: 2vw;
+  float: center;
 }
 
 .MuiGrid-spacing-xs-3 > .MuiGrid-item {
@@ -760,6 +761,7 @@ input#input {
   max-height: 10vw;
   object-position: 100% 0;
   object-fit: scale-down; */
+  display: inline-block;
   object-fit: cover;
   object-position: 50% 0;
   width: 12vw;
@@ -810,7 +812,7 @@ h9 {
 }
 
 #profilearea{
-  padding-bottom: 3vw;
+  padding-bottom: 2vw;
 }
 
 #nofavs span {
@@ -823,10 +825,19 @@ h9 {
   line-height: 120%;
   text-align: left;
   padding-left: -10vw;
+  padding-bottom: 5vw;
   font-style: normal;
   text-decoration: none;
 }
 
-div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4 {
+/* div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4 {
   padding: 0vw;
 }
+
+div.MuiPaper-root.MuiPaper-elevation1.makeStyles-paper-152.MuiPaper-rounded {
+  width: 30vw;
+}
+
+div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6.MuiGrid-grid-sm-4 {
+  width: 26vw;
+} */
