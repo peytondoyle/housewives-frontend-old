@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   card: {
-  maxWidth: 300,
+  // maxWidth: 300,
   border: 0,
   padding: 10,
   },
@@ -47,7 +47,7 @@ export default function FullWidthGrid(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={3}>
+    <Grid item xs={4}>
       <Paper className={classes.paper}>
       <Link to={`/housewives/${props.housewife.id}`}>
       <div class="profilecard">

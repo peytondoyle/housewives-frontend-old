@@ -172,7 +172,7 @@ p.filterbuttontext {
 
 .filterwrapper {
   margin: 0 auto;
-  width: 100px;
+  width: 100%;
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
   display: -ms-flexbox;  /* TWEENER - IE 10 */
   display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
@@ -734,7 +734,7 @@ input#input {
   border: 0px;
   border-style: solid;
   padding-bottom: 0.5vw;
-  border-radius: 100px;
+  /* border-radius: 100px; */
 }
 
 #profilepic {
@@ -744,7 +744,7 @@ input#input {
 
 .profilecard {
   text-align: center;
-  /* width: 10vw; */
+  width: 100%;
 }
 
 
@@ -790,7 +790,8 @@ h9 {
 }
 
 .wrap {
-  padding-top: 13.25vw;
+  padding-top: 12.25vw;
+  /* padding-left: 7vw; */
   display: flex;
 }
 
@@ -810,4 +811,22 @@ h9 {
 
 #profilearea{
   padding-bottom: 3vw;
+}
+
+#nofavs span {
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
+  font-weight: 900;
+  font-style: normal;
+  color: #000000;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: left;
+  padding-left: -10vw;
+  font-style: normal;
+  text-decoration: none;
+}
+
+div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-4 {
+  padding: 0vw;
 }

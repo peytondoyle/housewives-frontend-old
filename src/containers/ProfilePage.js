@@ -111,7 +111,7 @@ class ProfilePage extends React.Component {
 
         <Grid item xs={2}>
         <div class="wrap">
-          <span>Favorites</span>
+          <span>Favorite Housewives</span>
         </div>
         </Grid>
 
@@ -135,10 +135,15 @@ class ProfilePage extends React.Component {
       <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
         <Box display="flex" p={1} style={{margin: '-1.3vw'}}>
         <Grid container spacing={3}>
-          {this.state.favsByUser.map(housewife => <FavoriteCard
+
+          {this.state.favsByUser.length === 0 ?
+          <div id="nofavs"><span>You don't have any favorites yet. Add some!</span></div>
+          :
+          this.state.favsByUser.map(housewife => <FavoriteCard
             housewife={housewife.housewife}
             openMenu={this.props.openMenu}
             menu_on={this.props.menu_on}/>)}
+
         </Grid>
         </Box>
       </div>
