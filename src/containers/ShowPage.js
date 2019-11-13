@@ -355,7 +355,9 @@ class ShowPage extends React.Component {
          this.mustLogIn()}
 
        handleComment = (e) => {
-         let comment = e.target.parentNode.children[14].children[0].value
+         let commentInput = document.getElementById('commentInput')
+         let comment = commentInput.value
+         // e.target.parentNode.children[14].children[0].value
          console.log(comment)
          let currentHW = this.props.selectedHW.id
          let currentUser = this.props.currentUser
@@ -371,10 +373,10 @@ class ShowPage extends React.Component {
          .then((response) => {return response.json()})
          .then((rating) => {
            console.log("add comment", comment)
-           // this.setState({currentRatingId: rating.id, liked: true, heartImg: "https://i.imgur.com/AoMrC43.png"})
-           // this.postClick()})
+           this.pullingComments();
          }
          )
+         document.getElementById('commentInput').value='';
          }
 
        whichIcon = () => {
@@ -529,7 +531,7 @@ class ShowPage extends React.Component {
 
 
             <div class="block">
-              <input type="text" class="comment" placeholder="leave a comment" id="input" maxlength="55"></input>
+              <input type="text" class="comment" placeholder="leave a comment" id="commentInput" maxlength="55"></input>
             </div>
             <button type="button" class="btn-sample" id="commentsubmit"
             onClick={this.userLoggedInComments}>Submit</button>
