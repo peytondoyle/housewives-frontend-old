@@ -454,6 +454,99 @@ p#heart {
   margin-bottom: -2vw;
 }
 
+#housewifeinfo span {
+  font-family: canada-type-gibson, sans-serif;
+  display: inline;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.5vw;
+  margin-left: 0px;
+  text-align: center;
+  background-image: -webkit-linear-gradient(right, #ef9db3, #00afce);
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 120%;
+}
+
+#tagline span{
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
+  font-weight: 900;
+  font-style: normal;
+  color: #000000;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: left;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#housewifeinfotitle {
+  margin-bottom: 0.5vw;
+  margin-top: 2vw;
+  text-align: left;
+}
+
+.comment {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: 15px/1 'Open Sans', sans-serif;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 46vw;
+  background-image: -webkit-linear-gradient(right, #ef9db3, #00afce);
+  background: -o-linear-gradient(right, #00afce, #ef9db3);
+  background: -moz-linear-gradient(right, #00afce, #ef9db3);
+  background: linear-gradient(to right, #00afce , #ef9db3);
+  opacity: 85%;
+  border: none;
+  padding: 1vw 1vw 1vw 1vw;
+  border-radius: 1vw;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: center;
+  font-style: normal;
+  text-decoration: none;
+}
+
+#commentsubmit {
+  height: 3vw;
+  width: 46vw;
+  border-radius: 1vw;
+  margin-bottom: 2vw;
+  text-align: center;
+  font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
+  font-weight: 900;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 1.2vw;
+  line-height: 120%;
+  text-align: center;
+  font-style: normal;
+  text-decoration: none;
+  background-color: #ef9db3;
+}
+
 /* Login page styling */
 #logintitle {
   display: inline-grid;

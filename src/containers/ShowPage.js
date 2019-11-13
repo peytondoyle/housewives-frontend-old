@@ -391,16 +391,15 @@ class ShowPage extends React.Component {
         <Grid item xs={7}>
           <Paper className={classes.paper} style={{textAlign: "left"}}>
             <div id="housewifesubtitle">
-              <br></br>
-              <h8><em>Taglines</em></h8><br></br>
+            <div id="housewifeinfo">
+              <div id="housewifeinfotitle"><span>Taglines</span></div>
 
               {this.props.selectedHW.taglines.map(tagline =>
-              {return <div><h8>Season {tagline.season}</h8> <br></br> <p id="taglines">{tagline.tagline}</p></div>})}
+              {return <div><h8>Season {tagline.season}</h8> <p id="taglines">{tagline.tagline}</p></div>})}
 
-            </div>
-            <div>
 
-            <h8><em>GIFs</em></h8><br></br>
+
+            <div id="housewifeinfotitle"><span>GIFs</span></div>
             {this.props.selectedHW.seasons.length === 1 ?
             <p id="taglines">Since {this.props.selectedHW.firstname} is a one season wonder, her GIF selection might be limited.</p>
             :
@@ -441,6 +440,14 @@ class ShowPage extends React.Component {
               :
               null
             }></img>
+
+            <div id="housewifeinfotitle"><span>Comments</span></div>
+            <div class="block">
+              <input type="text" class="comment" placeholder="leave a comment" id="input"></input>
+            </div>
+            <button type="button" class="btn-sample" id="commentsubmit"
+            onClick={this.props.handleUserFormSubmitLogin}>Submit</button>
+            </div>
             </div>
           </Paper>
         </Grid>
