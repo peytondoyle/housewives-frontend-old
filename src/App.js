@@ -320,7 +320,7 @@ class App extends React.Component {
         })
     }
 
-    
+
 
 
 
@@ -376,6 +376,44 @@ class App extends React.Component {
           };
         }
       }
+
+      userCanSeeProfile = () => {
+        if (this.state.menu_on === false) {
+          return (
+          <>
+          <ProfilePage
+          openMenu={this.openMenu}
+          menu_on={this.state.menu_on}
+          currentUser={this.state.currentUser}
+          menuAway={this.menuAway}
+          logOut={this.logOut}/>
+          </>)
+        } else {
+          return (
+          <>
+          <Menu
+          openMenu={this.openMenu}
+          menu_on={this.state.menu_on}
+          settingCityATL={this.settingCityATL}
+          settingCityBH={this.settingCityBH}
+          settingCityD={this.settingCityD}
+          settingCityDC={this.settingCityDC}
+          settingCityM={this.settingCityM}
+          settingCityNJ={this.settingCityNJ}
+          settingCityNY={this.settingCityNY}
+          settingCityOC={this.settingCityOC}
+          settingCityP={this.settingCityP}
+          currentUser={this.state.currentUser}
+          menuAway={this.menuAway}
+          logOut={this.logOut}
+          routerProps
+          />
+          </>)
+        }
+      }
+
+
+
 
 
 
@@ -455,32 +493,10 @@ class App extends React.Component {
           </Route>
 
           <Route exact path="/profile">
-            {
-              this.state.menu_on === false ?
-              <ProfilePage
-              openMenu={this.openMenu}
-              menu_on={this.state.menu_on}
-              currentUser={this.state.currentUser}
-              menuAway={this.menuAway}
-              logOut={this.logOut}/>
+            {this.state.currentUser ?
+              this.userCanSeeProfile()
               :
-              <Menu
-              openMenu={this.openMenu}
-              menu_on={this.state.menu_on}
-              settingCityATL={this.settingCityATL}
-              settingCityBH={this.settingCityBH}
-              settingCityD={this.settingCityD}
-              settingCityDC={this.settingCityDC}
-              settingCityM={this.settingCityM}
-              settingCityNJ={this.settingCityNJ}
-              settingCityNY={this.settingCityNY}
-              settingCityOC={this.settingCityOC}
-              settingCityP={this.settingCityP}
-              currentUser={this.state.currentUser}
-              menuAway={this.menuAway}
-              logOut={this.logOut}
-              routerProps
-              />
+            <Redirect to ="/home" />
             }
           </Route>
 
