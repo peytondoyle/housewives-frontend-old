@@ -565,12 +565,13 @@ p#heart {
   border-style: solid;
   padding-bottom: 0.5vw;
   float:left;
+  padding-right: 0.5vw;
   /* border-radius: 25%/10%; */
 }
 
 #comments {
   font-family: canada-type-gibson, sans-serif;
-  display: block;
+  display: flex;
   font-weight: 300;
   font-style: normal;
   color: #000000;
@@ -579,12 +580,21 @@ p#heart {
   text-align: left;
   font-style: normal;
   text-decoration: none;
-  margin-left: 4vw;
+  width: 0vw;
+}
+
+#commentdiv {
+  padding-bottom: 2vw;
+}
+
+p#comments {
+  margin: 0vw;
+  padding-top: 0.5vw;
 }
 
 h10  {
   font-family: canada-type-gibson, sans-serif;
-  display: inline-block;
+  display: flex;
   font-weight: 900;
   font-style: normal;
   color: #000000;
@@ -593,7 +603,7 @@ h10  {
   text-align: left;
   font-style: normal;
   text-decoration: none;
-  margin-top: -10vw;
+  padding-top: -10vw;
 }
 
 /* Login page styling */

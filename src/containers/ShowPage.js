@@ -355,7 +355,7 @@ class ShowPage extends React.Component {
          this.mustLogIn()}
 
        handleComment = (e) => {
-         let comment = e.target.parentNode.children[12].children[0].value
+         let comment = e.target.parentNode.children[14].children[0].value
          console.log(comment)
          let currentHW = this.props.selectedHW.id
          let currentUser = this.props.currentUser
@@ -400,7 +400,7 @@ class ShowPage extends React.Component {
 
    startComments = () => {
      return this.state.totalComments.map(comment =>
-     {return <><div class="imgDes"><img src={comment.user.image} id="commentthumbnail"></img></div><h10>{comment.comment}</h10><br></br><p id="comments">{comment.user.username}</p></>})
+     {return <><div id="commentdiv"><div class="imgDes"><img src={comment.user.image} id="commentthumbnail"></img></div><div><h10>{comment.comment}</h10><p id="comments">{comment.user.username}</p></div></div></>})
    }
 
   render(){
@@ -529,7 +529,7 @@ class ShowPage extends React.Component {
 
 
             <div class="block">
-              <input type="text" class="comment" placeholder="leave a comment" id="input"></input>
+              <input type="text" class="comment" placeholder="leave a comment" id="input" maxlength="55"></input>
             </div>
             <button type="button" class="btn-sample" id="commentsubmit"
             onClick={this.userLoggedInComments}>Submit</button>
