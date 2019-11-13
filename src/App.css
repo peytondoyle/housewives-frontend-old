@@ -608,6 +608,13 @@ p#heart {
   margin-right: 0.5vw;
 }
 
+.housewifeprofileimg:hover {
+  opacity: 75%;
+  transition: 0.5s ease;
+  /* background-color: #008CBA; */
+}
+
+
 h9 {
   font-family: canada-type-gibson, sans-serif;
   display: flex;
@@ -621,18 +628,25 @@ h9 {
   text-decoration: none;
 }
 
-h6 {
+.wrap {
+  padding-top: 13.25vw;
+  display: flex;
+}
+
+.wrap span {
+  align-self: flex-end;
   font-family: canada-type-gibson, sans-serif;
+  display: inline-block;
   font-weight: 900;
   font-style: normal;
-  color: #ffffff;
-  font-size: 0.9vw;
-  line-height: 1.0vw;
+  color: #000000;
+  font-size: 2vw;
+  line-height: 120%;
   text-align: left;
-  margin: 0px;
-  text-align: center;
-  background: -o-linear-gradient(right, #00afce, #ef9db3);
-  background: -moz-linear-gradient(right, #00afce, #ef9db3);
-  background: linear-gradient(to right, #00afce , #ef9db3);
+  font-style: normal;
   text-decoration: none;
+}
+
+#profilearea{
+  padding-bottom: 3vw;
 }

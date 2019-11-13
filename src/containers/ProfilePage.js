@@ -93,6 +93,7 @@ class ProfilePage extends React.Component {
         onClick={this.props.openMenu}></img>
       </div>
 
+      <div>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
@@ -105,12 +106,21 @@ class ProfilePage extends React.Component {
       </Grid>
 
       <Grid container spacing={3}>
-        <Grid item xs={9}>
+        <Grid item xs={2}>
+        </Grid>
+
+        <Grid item xs={2}>
+        <div class="wrap">
+          <span>Favorites</span>
+        </div>
+        </Grid>
+
+        <Grid item xs={6}>
         <Paper className={classes.paper} style={{textAlign: "right"}}>
               <div id="profilepic">
                 <img src={this.props.currentUser.image} id="headshot"></img>
               </div>
-              <div>
+              <div id="profilearea">
               <h8>{this.props.currentUser.username}</h8>
               <p id="bio">Member since: {this.dateSince()}
               <br></br>
@@ -120,6 +130,7 @@ class ProfilePage extends React.Component {
         </Paper>
         </Grid>
       </Grid>
+      </div>
 
       <div style={{ width: '71%', alignItems:"center"}} class="filterwrapper">
         <Box display="flex" p={1} style={{margin: '-1.3vw'}}>
