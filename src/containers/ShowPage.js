@@ -406,13 +406,30 @@ class ShowPage extends React.Component {
    }
 
    deleteComment = (e) => {
-     let commentId = e.target.id
-     let totalComments = this.state.totalComments
-     let find = totalComments.filter(obj => {
-        return obj.id.toString() === commentId
+    let targetCommentId = e.target.id
+    let totalComments = this.state.totalComments
+    let find = totalComments.filter(obj => {
+        return obj.id.toString() === targetCommentId
       })
-     this.setState({comment2Delete: find, commentIdforDelete: commentId})
-     fetch(`https://realhousewives-backend.herokuapp.com/comments/${this.state.commentIdforDelete}`, {
+    let userId2delete = find[0].user_id
+    let commentId2delete = find[0].id
+      // debugger
+     // this.setState({comment2Delete: find, comment2DeleteID: find[0].user_id, commentIdforDelete: commentId})
+      this.props.currentUser ?
+      this.userComment(targetCommentId, commentId2delete, userId2delete)
+      :
+      window.alert("You must be logged in to delete a comment!")
+   }
+
+   userComment = (targetCommentId, commentId2delete, userId2delete) => {
+     this.props.currentUser.id === userId2delete ?
+     this.deleteDeleteComment(targetCommentId)
+     :
+     window.alert("This isn't your comment. You can't delete it!")
+   }
+
+   deleteDeleteComment = (targetCommentId) => {
+     fetch(`https://realhousewives-backend.herokuapp.com/comments/${targetCommentId}`, {
        method: 'DELETE',
        headers: {
          'Content-Type': 'application/json',
@@ -424,7 +441,6 @@ class ShowPage extends React.Component {
           // this.setState({liked: false, heartImg: "https://i.imgur.com/j3BRC9r.png", currentRatingId: 0})
         this.pullingComments()})
    }
-
   render(){
     window.scrollTo(0,0);
 
