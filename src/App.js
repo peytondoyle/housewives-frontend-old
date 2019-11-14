@@ -143,7 +143,7 @@ class App extends React.Component {
   }
 
   resetIndex = (e) => {
-    let allHousewives = this.state.allHousewives
+    let allHousewives = this.state.allHousewivesProtected
     let sorted = allHousewives.sort(this.dynamicSort("firstname"));
     console.log(sorted)
     this.setState({allHousewives: sorted, ratingReverse: false, nameReverse: false, tenureReverse: false, cityReverse: false, nameButton: "▲ Name", tenureButton: "▲ Tenure", cityButton: "▲ City"})
@@ -265,11 +265,17 @@ class App extends React.Component {
       currentUser={this.state.currentUser}
       menuAway={this.menuAway}
       logOut={this.logOut}
+      menuAwayHW={this.menuAwayHW}
       />)
   }
 
   menuAway = () => {
     this.setState({menu_on: false})
+  }
+
+  menuAwayHW = () => {
+    this.setState({menu_on: false});
+    this.resetIndex();
   }
 
   logOut = () => {
@@ -386,7 +392,8 @@ class App extends React.Component {
           menu_on={this.state.menu_on}
           currentUser={this.state.currentUser}
           menuAway={this.menuAway}
-          logOut={this.logOut}/>
+          logOut={this.logOut}
+          menuAwayHW={this.menuAwayHW}/>
           </>)
         } else {
           return (
@@ -406,6 +413,7 @@ class App extends React.Component {
           currentUser={this.state.currentUser}
           menuAway={this.menuAway}
           logOut={this.logOut}
+          menuAwayHW={this.menuAwayHW}
           routerProps
           />
           </>)
@@ -459,6 +467,7 @@ class App extends React.Component {
               currentUser={this.state.currentUser}
               menuAway={this.menuAway}
               logOut={this.logOut}
+              menuAwayHW={this.menuAwayHW}
               routerProps
               />
             }
@@ -487,6 +496,7 @@ class App extends React.Component {
               currentUser={this.state.currentUser}
               menuAway={this.menuAway}
               logOut={this.logOut}
+              menuAwayHW={this.menuAwayHW}
               routerProps
               />
             }
@@ -525,6 +535,7 @@ class App extends React.Component {
               currentUser={this.state.currentUser}
               menuAway={this.menuAway}
               logOut={this.logOut}
+              menuAwayHW={this.menuAwayHW}
               routerProps
               />
             }
@@ -553,6 +564,7 @@ class App extends React.Component {
             currentUser={this.state.currentUser}
             menuAway={this.menuAway}
             logOut={this.logOut}
+            menuAwayHW={this.menuAwayHW}
             />
           }
 
@@ -578,6 +590,7 @@ class App extends React.Component {
             currentUser={this.state.currentUser}
             menuAway={this.menuAway}
             logOut={this.logOut}
+            menuAwayHW={this.menuAwayHW}
             />
           }
         </Switch>
