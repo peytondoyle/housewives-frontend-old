@@ -379,6 +379,7 @@ class ShowPage extends React.Component {
          .then((response) => {return response.json()})
          .then((rating) => {
            console.log("add comment", comment)
+           this.setState({commentText: null})
            this.pullingComments();
          }
          )
@@ -423,8 +424,7 @@ class ShowPage extends React.Component {
       })
     let userId2delete = find[0].user_id
     let commentId2delete = find[0].id
-      // debugger
-     // this.setState({comment2Delete: find, comment2DeleteID: find[0].user_id, commentIdforDelete: commentId})
+
       this.props.currentUser ?
       this.userComment(targetCommentId, commentId2delete, userId2delete)
       :
