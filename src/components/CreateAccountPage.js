@@ -42,6 +42,9 @@ class LoginPage extends React.Component {
     this.makeGif();
   }
 
+
+
+
   makeGif = () => {
     let firstHalf = "https://api.giphy.com/v1/gifs/search?api_key=MBLG8iL6WK4fhlNTBExR5HjnVI5P6CIf&q="
     let firstName = "real"
@@ -88,8 +91,6 @@ class LoginPage extends React.Component {
           <img src={this.state.loginGif} id="loginimg"></img>
           <div class="block">
             <input type="text" class="input-res" placeholder="username" maxlength="8" id="input" required></input>
-            <br></br>
-            <input type="text" class="input-res" placeholder="image URL" id="input"></input>
             <br></br>
             <input type="text" class="input-res" placeholder="fav city" id="input"></input>
           </div>

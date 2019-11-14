@@ -22,6 +22,9 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 let HOUSEWIVES_URL = "https://realhousewives-backend.herokuapp.com/housewives"
 // const browserHistory = createBrowserHistory();
 
+let userThumbnails = ["https://i.imgur.com/dRac0Hb.png", "https://i.imgur.com/C6sANgU.png", "https://i.imgur.com/62PyQwa.png", "https://i.imgur.com/sWJdFeA.png", "https://i.imgur.com/PTL0QhI.png", "https://i.imgur.com/4xployw.png", "https://i.imgur.com/zAygdGx.png", "https://i.imgur.com/6TBvely.png", "https://i.imgur.com/A6wxf3n.png", "https://i.imgur.com/4a5KPxQ.png"]
+
+
 class App extends React.Component {
 
   constructor(){
@@ -59,6 +62,7 @@ class App extends React.Component {
       // console.log(users)
       this.setState({allUsers: users})
       })
+      this.pickUserThumbnail();
   }
 
   dynamicSort = (property) => {
@@ -294,12 +298,18 @@ class App extends React.Component {
     userLoggedInComments={this.userLoggedInComments}
     />}
 
+    pickUserThumbnail = () => {
+      let index = Math.floor(Math.random() * 10) + 1
+      let userImg = userThumbnails[index]
+      this.setState({userImg: userImg})
+    }
+
   handleUserFormSubmitCreate = (event) => {
     let initialName = event.target.parentElement.childNodes[3].children[0].value
     let lowercaseName = initialName.toString().toLowerCase();
     let name = lowercaseName.replace(/\s/g, '');
-    let image = event.target.parentElement.childNodes[3].children[2].value
-    let favcity = event.target.parentElement.childNodes[3].children[4].value
+    let image = this.state.userImg
+    let favcity = event.target.parentElement.childNodes[3].children[2].value
     let body = JSON.stringify({username: name, image: image, favcity: favcity})
 
     // Verifying username doesn't exist already
@@ -311,6 +321,7 @@ class App extends React.Component {
       window.alert("This username is in use. Please choose another.");
       }
     }
+
 
     restOfHandle = (body) => {
       fetch('https://realhousewives-backend.herokuapp.com/users', {
