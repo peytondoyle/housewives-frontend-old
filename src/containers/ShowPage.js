@@ -11,6 +11,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Popover from '@material-ui/core/Popover';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import {
+  Tooltip,
+} from 'react-tippy';
+import Tippy from '@tippy.js/react';
+import 'tippy.js/dist/tippy.css';
+
 
 const styles = theme => ({
   root: {
@@ -402,8 +408,12 @@ class ShowPage extends React.Component {
 
    startComments = () => {
      return this.state.totalComments.map(comment =>
-     {return <><div id="commentdiv"><div class="imgDes"><img src={comment.user.image} class="commentthumbnail" onClick={this.deleteComment} id={comment.id}></img></div><div><h10>{comment.comment}</h10><p id="comments">{comment.user.username}</p></div></div></>})
+     {return <> <div id="commentdiv"><div class="imgDes"><Tippy content="Click me to delete this comment!" placement="left"><img src={comment.user.image} class="commentthumbnail" onClick={this.deleteComment} id={comment.id}></img></Tippy></div><div><h10>{comment.comment}</h10><p id="comments">{comment.user.username}</p></div></div></>})
    }
+
+
+
+
 
    deleteComment = (e) => {
     let targetCommentId = e.target.id
@@ -555,6 +565,7 @@ class ShowPage extends React.Component {
             }></img>
 
             <div id="housewifeinfotitle"><span>Comments</span></div>
+
             <p id="taglines">{this.state.commentText}</p>
 
 

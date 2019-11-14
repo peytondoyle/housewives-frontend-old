@@ -432,6 +432,20 @@ p#heart {
   text-decoration: none;
 }
 
+#regretComment {
+  font-family: canada-type-gibson, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-style: normal;
+  color: #000000;
+  font-size: 0.70vw;
+  line-height: 20%;
+  margin-top: -.25vw;
+  text-align: left;
+  font-style: oblique;
+  text-decoration: none;
+}
+
 #hwgifs {
   object-fit: cover;
   object-position: 50% 0;
@@ -574,6 +588,19 @@ input#commentInput.comment {
   /* border-radius: 25%/10%; */
 }
 
+.tippy-tooltip.tomato-theme {
+  background-color: tomato;
+  color: yellow;
+  padding: 0.25vw;
+}
+
+
+.commentthumbnail:hover {
+  color: #cf2027;
+  /* opacity: 50%; */
+  transition: 0.8s ease;
+}
+
 #comments {
   font-family: canada-type-gibson, sans-serif;
   display: flex;
@@ -582,6 +609,22 @@ input#commentInput.comment {
   color: #000000;
   font-size: 1vw;
   line-height: 20%;
+  text-align: left;
+  font-style: normal;
+  text-decoration: none;
+  width: 0vw;
+}
+
+.commentdelete {
+  font-family: canada-type-gibson, sans-serif;
+  display: flex;
+  font-weight: 300;
+  font-style: normal;
+  color: #cf2027;
+  font-size: 0.5vw;
+  line-height: 0%;
+  margin-top: -2.5vw;
+  float: center;
   text-align: left;
   font-style: normal;
   text-decoration: none;
