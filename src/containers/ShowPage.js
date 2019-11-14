@@ -68,11 +68,10 @@ class ShowPage extends React.Component {
     fetch(HWRATING_URL)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-      this.state.currentUser ?
-      this.pullingUserLikes(data)
-      :
+      this.props.currentUser === null ?
       this.noUserLikes(data)
+      :
+      this.pullingUserLikes(data)
   })}
 
   pullingFavs = () => {
@@ -148,12 +147,14 @@ class ShowPage extends React.Component {
   }
 
   noUserLikes = (data) => {
+    console.log("NO LIKES TRIGGER")
     let totalRatings = data.length
     this.setState({hwRatings: [], totalRatings: totalRatings, liked: false, currentRatingId: 0})
     this.setHearts();
   }
 
   pullingUserLikes = (data) => {
+    console.log("USER TRIGGERED")
     let totalRatings = data.length
     let userHasRating = data.some(rating => rating.user_id === this.props.currentUser.id)
     if (userHasRating) {
