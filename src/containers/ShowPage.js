@@ -158,8 +158,8 @@ class ShowPage extends React.Component {
     let totalRatings = data.length
     let userHasRating = data.some(rating => rating.user_id === this.props.currentUser.id)
     if (userHasRating) {
-      let usersRatings = data.filter(rating => rating["user_id"])
-      this.setState({hwRatings: userHasRating, totalRatings: totalRatings, liked: true, currentRatingId: usersRatings[0].id})
+      let usersRating = data.find(rating => rating.user_id === this.props.currentUser.id)
+      this.setState({hwRatings: userHasRating, totalRatings: totalRatings, liked: true, currentRatingId: usersRating.id})
       this.setHearts();
     }
     else {
